@@ -1,3 +1,4 @@
+import os
 import re
 import csv
 
@@ -33,8 +34,17 @@ with open(disassembly_file_path, 'r') as file:
 # Process the disassembly
 instructions = parse_disassembly(disassembly)
 
+# Define output directory
+output_directory = r"C:\External\Projects\8th Semester\Thesis\feature_extraction\output"
+
+# Create the output directory if it doesn't exist
+os.makedirs(output_directory, exist_ok=True)
+
+# Define the output CSV file path
+output_csv_file_path = os.path.join(output_directory, "disassembly_output_columns.csv")
+
 # Export to CSV 
-with open('disassembly_output_columns.csv', 'w', newline='') as csvfile:
+with open(output_csv_file_path, 'w', newline='') as csvfile:
     writer = csv.writer(csvfile)
 
     # Write the header row (block addresses)
@@ -50,3 +60,5 @@ with open('disassembly_output_columns.csv', 'w', newline='') as csvfile:
             else:
                 row.append('')  # Fill blank cells
         writer.writerow(row)
+
+print("Output CSV file saved to:", output_csv_file_path)
