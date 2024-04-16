@@ -1,0 +1,16 @@
+00000000004003f0,0000000000400408,0000000000400418,0000000000400428,0000000000400440,000000000040046c,0000000000400490,0000000000400500,0000000000400524,0000000000400668
+sub,"$0x8,%rsp",pushq,0x200be2(%rip),#,600ff0,jmpq,*0x200be2(%rip),#,601000,jmpq,*0x200bda(%rip),#,601008,xor,"%ebp,%ebp",sub,"$0x8,%rsp",push,%rbp,push,%rbp,push,%rbp,sub,"$0x8,%rsp"
+callq,40046c,jmpq,*0x200be4(%rip),#,600ff8,pushq,$0x0,pushq,$0x1,mov,"%rdx,%r9",mov,"0x200b69(%rip),%rax",#,600fe0,mov,"%rsp,%rbp",cmpq,"$0x0,0x20092f(%rip)",#,600e38,mov,"%rsp,%rbp",callq,400490
+,nopl,0x0(%rax),jmpq,400408,jmpq,400408,pop,%rsi,test,"%rax,%rax",push,%rbx,00,sub,"$0x10,%rsp",add,"$0x8,%rsp"
+,,,,,je,40047e,sub,"$0x8,%rsp",mov,"%rsp,%rbp",movl,"$0x6,-0x4(%rbp)",retq
+,,,,,callq,*%rax,cmpb,"$0x0,0x200b80(%rip)",#,601020,je,400520,mov,"$0x3f800000,%eax",
+,,,,,,jne,4004ed,mov,"$0x0,%eax",mov,"%eax,-0x8(%rbp)",
+,,,,,,mov,"$0x600e30,%ebx",test,"%rax,%rax",,
+,,,,,,00,00,00,00,00,je,400520,,
+,,,,,,,mov,"$0x600e38,%edi",,
+,,,,,,,leaveq,,
+,,,,,,,jmpq,*%rax,,
+,,,,,,,leaveq,,
+,,,,,,,retq,,
+,,,,,,,nop,,
+,,,,,,,nop,,
