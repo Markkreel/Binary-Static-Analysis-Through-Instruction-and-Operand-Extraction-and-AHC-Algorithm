@@ -173,13 +173,13 @@ Block_ID,Address,Instruction,Left Operand,Right Operand
 8,0000000000001398,xorps,%xmm1,%xmm1 
 8,000000000000139b,ucomisd,%xmm1,%xmm0 
 8,000000000000139f,jne,"13d2 <main+0x1f2>"
-8,00000000000013a5,jp,"13d2 <main+0x1f2>" 
+8,00000000000013a5,jp,"13d2 <main+0x1f2>", 
 8,00000000000013ab,mov,0x2c1e(%rip),%rdi 
 8,00000000000013b2,lea,0xca8(%rip),%rsi 
 8,00000000000013b9,call,"1050 <_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@plt>",
 8,00000000000013be,mov,%rax,%rdi 
 8,00000000000013c1,mov,0x2bf8(%rip),%rsi
-8,00000000000013c8,call,"1060 <_ZNSolsEPFRSoS_E@plt>"
+8,00000000000013c8,call,"1060 <_ZNSolsEPFRSoS_E@plt>",
 8,00000000000013cd,jmp,"142f <main+0x24f>" 
 8,00000000000013d2,movsd,-0x10(%rbp),%xmm0 
 8,00000000000013d7,mov,0x2bf2(%rip),%rdi 
@@ -199,14 +199,14 @@ Block_ID,Address,Instruction,Left Operand,Right Operand
 8,000000000000141b,call,"1090 <_ZNSolsEd@plt>"
 8,0000000000001420,mov,%rax,%rdi
 8,0000000000001423,mov,0x2b96(%rip),%rsi
-8,000000000000142a,call,"1060 <_ZNSolsEPFRSoS_E@plt>"
+8,000000000000142a,call,"1060 <_ZNSolsEPFRSoS_E@plt>",
 8,000000000000142f,jmp,1456 <main+0x276>
 8,0000000000001434,mov,0x2b95(%rip),%rdi
 8,000000000000143b,lea,0xc3b(%rip),%rsi
 8,0000000000001442,call,"1050 <_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@plt>"
 8,0000000000001447,mov,%rax,%rdi
 8,000000000000144a,mov,0x2b6f(%rip),%rsi
-8,0000000000001451,call,"1060 <_ZNSolsEPFRSoS_E@plt>"
+8,0000000000001451,call,"1060 <_ZNSolsEPFRSoS_E@plt>",
 8,0000000000001456,xor,%eax,%eax
 8,0000000000001458,add,$0x30,%rsp
 8,000000000000145c,pop,%rbp,
