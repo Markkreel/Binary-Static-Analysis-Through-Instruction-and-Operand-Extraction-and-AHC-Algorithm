@@ -1,5 +1,7 @@
+"""
+This code uses the OS and CSV modules.
+"""
 import os
-import re
 import csv
 
 def parse_disassembly(disassembly_text):
@@ -21,40 +23,40 @@ def parse_disassembly(disassembly_text):
             current_addr = line.split()[0]
             results[current_addr] = []
         elif line.strip():  # Instruction lines
-            parts = line.strip().split('\t')[-1].split() 
+            parts = line.strip().split('\t')[-1].split()
             results[current_addr].append(parts)
 
     return results
-  
+
 # Read disassembly from file
-disassembly_file_path = r"C:\External\Projects\8th Semester\Thesis\feature_extraction\disassembled_test.txt"
-with open(disassembly_file_path, 'r') as file:
+INPUT_FILE = r"C:\External\Projects\8th Semester\Thesis\feature_extraction\disassembled_test.txt"
+with open(INPUT_FILE, 'r', encoding='utf-8') as file:
     disassembly = file.read()
 
 # Process the disassembly
 instructions = parse_disassembly(disassembly)
 
 # Define output directory
-output_directory = r"C:\External\Projects\8th Semester\Thesis\feature_extraction\output"
+OUTPUT_DIRECTORY = r"C:\External\Projects\8th Semester\Thesis\feature_extraction\output"
 
 # Create the output directory if it doesn't exist
-os.makedirs(output_directory, exist_ok=True)
+os.makedirs(OUTPUT_DIRECTORY, exist_ok=True)
 
 # Define the output CSV file path
-output_csv_file_path = os.path.join(output_directory, "disassembly_output_columns.csv")
+output_csv_file_path = os.path.join(OUTPUT_DIRECTORY, "disassembly_output_columns.csv")
 
-# Export to CSV 
-with open(output_csv_file_path, 'w', newline='') as csvfile:
+# Export to CSV
+with open(output_csv_file_path, 'w', newline='', encoding='utf-8') as csvfile:
     writer = csv.writer(csvfile)
 
     # Write the header row (block addresses)
     writer.writerow(instructions.keys())
 
     # Transpose data for writing rows
-    max_row_length = max(len(instructions[addr]) for addr in instructions)
+    max_row_length = max(len(instruction) for addr, instruction in instructions.items())
     for i in range(max_row_length):
         row = []
-        for addr in instructions:
+        for addr, instruction in instructions.items():
             if i < len(instructions[addr]):
                 row.extend(instructions[addr][i])  # Add instruction/operands
             else:

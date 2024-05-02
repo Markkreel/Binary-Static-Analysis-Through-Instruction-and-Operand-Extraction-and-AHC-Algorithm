@@ -1,5 +1,9 @@
+"""
+This code uses OS and CSV modules.
+"""
 import os
-import re
+import csv
+
 
 def parse_disassembly(disassembly_text):
     """Parses the disassembly text and extracts addresses, instructions, operands.
@@ -30,25 +34,22 @@ def parse_disassembly(disassembly_text):
     return results
 
 # Read disassembly from file
-disassembly_file_path = r"C:\External\Projects\8th Semester\Thesis\feature_extraction\disassembled_test.txt"
-with open(disassembly_file_path, 'r') as file:
+FILE_INPUT = r"C:\External\Projects\8th Semester\Thesis\feature_extraction\disassembled_test.txt"
+with open(FILE_INPUT, 'r', encoding='utf-8') as file:
     disassembly = file.read()
-
-# Process the disassembly and export to CSV
-import csv
 
 instructions = parse_disassembly(disassembly)
 
 # Define output directory
-output_directory = r"C:\External\Projects\8th Semester\Thesis\feature_extraction\output"
+OUTPUT_DIRECTORY = r"C:\External\Projects\8th Semester\Thesis\feature_extraction\output"
 
 # Create the output directory if it doesn't exist
-os.makedirs(output_directory, exist_ok=True)
+os.makedirs(OUTPUT_DIRECTORY, exist_ok=True)
 
 # Define the output CSV file path
-output_csv_file_path = os.path.join(output_directory, "disassembly_output_rows.csv")
+output_csv_file_path = os.path.join(OUTPUT_DIRECTORY, "disassembly_output_rows.csv")
 
-with open(output_csv_file_path, 'w', newline='') as csvfile:
+with open(output_csv_file_path, 'w', newline='', encoding='utf-8') as csvfile:
     writer = csv.writer(csvfile)
     writer.writerows(instructions)
 
