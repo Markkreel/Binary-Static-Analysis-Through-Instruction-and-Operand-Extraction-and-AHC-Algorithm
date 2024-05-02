@@ -180,19 +180,19 @@ Block_ID,Address,Instruction,Left Operand,Right Operand
 8,00000000000013be,mov,%rax,%rdi 
 8,00000000000013c1,mov,0x2bf8(%rip),%rsi
 8,00000000000013c8,call,"1060 <_ZNSolsEPFRSoS_E@plt>",
-8,00000000000013cd,jmp,"142f <main+0x24f>" 
+8,00000000000013cd,jmp,"142f <main+0x24f>", 
 8,00000000000013d2,movsd,-0x10(%rbp),%xmm0 
 8,00000000000013d7,mov,0x2bf2(%rip),%rdi 
-8,00000000000013de,call,"1090 <_ZNSolsEd@plt>"
+8,00000000000013de,call,"1090 <_ZNSolsEd@plt>",
 8,00000000000013e3,mov,%rax,%rdi 
 8,00000000000013e6,lea,0xc8c(%rip),%rsi 
-8,00000000000013ed,call,""1050 <_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@plt>""
+8,00000000000013ed,call,"1050 <_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@plt>",
 8,00000000000013f2,mov,%rax,%rdi
 8,00000000000013f5,movsd,-0x18(%rbp),%xmm0
 8,00000000000013fa,call,1090 <_ZNSolsEd@plt>
 8,00000000000013ff,mov,%rax,%rdi
 8,0000000000001402,lea,0xc4c(%rip),%rsi
-8,0000000000001409,call,"1050 <_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@plt>"
+8,0000000000001409,call,"1050 <_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@plt>",
 8,000000000000140e,mov,%rax,%rdi
 8,0000000000001411,movsd,-0x10(%rbp),%xmm0
 8,0000000000001416,divsd,-0x18(%rbp),%xmm0
@@ -203,7 +203,7 @@ Block_ID,Address,Instruction,Left Operand,Right Operand
 8,000000000000142f,jmp,1456 <main+0x276>
 8,0000000000001434,mov,0x2b95(%rip),%rdi
 8,000000000000143b,lea,0xc3b(%rip),%rsi
-8,0000000000001442,call,"1050 <_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@plt>"
+8,0000000000001442,call,"1050 <_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@plt>",
 8,0000000000001447,mov,%rax,%rdi
 8,000000000000144a,mov,0x2b6f(%rip),%rsi
 8,0000000000001451,call,"1060 <_ZNSolsEPFRSoS_E@plt>",
