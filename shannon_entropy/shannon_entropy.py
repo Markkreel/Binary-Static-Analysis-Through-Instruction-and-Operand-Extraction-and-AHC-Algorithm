@@ -1,3 +1,6 @@
+"""
+This program imports Pandas, Numpy, and Scipy to process data and calculate entropies.
+"""
 import pandas as pd
 import numpy as np
 from scipy.stats import entropy
@@ -33,9 +36,11 @@ def save_entropies_to_csv(entropies, output_file):
                     file.write(f"{block_id},{column},{value},{probability:.2f},{entropy_value:.2f}\n")
 
 def main():
+    """The main function is where I input the input_file and where the print process is."""
     # Load the CSV file into a DataFrame
-    INPUT_FILE = r"C:\External\Projects\8th Semester\Thesis\compiled\hello_world_disassembled\hello_world_disassembly.csv"
-    df = pd.read_csv(INPUT_FILE)
+    input_file = r"C:\External\Projects\\8th Semester\Thesis\
+        compiled\hello_world_disassembled\hello_world_disassembly.csv"
+    df = pd.read_csv(input_file)
 
     # Calculate Shannon Entropy for distinct data points within each block
     block_entropies = calculate_entropies_for_blocks(df)

@@ -1,3 +1,6 @@
+"""
+This programs imports Pandas, Matplotlib, and Seaborn to process and visualize data.
+"""
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
