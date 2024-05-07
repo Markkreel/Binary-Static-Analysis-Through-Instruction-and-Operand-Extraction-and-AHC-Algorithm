@@ -40,7 +40,7 @@ Block_ID,Address,Instruction,Left Operand,Right Operand
 4,000000000000113d,je,"1148 <deregister_tm_clones+0x28>"
 4,000000000000113f,jmp,*%rax
 4,0000000000001141,nopl,0x0(%rax)
-4,0000000000001148,ret,,,
+4,0000000000001148,ret,,
 4,0000000000001149,nopl,0x0(%rax)
 5,0000000000001150,lea,0x2f09(%rip),%rdi
 5,0000000000001157,lea,0x2f02(%rip),%rsi
@@ -56,7 +56,7 @@ Block_ID,Address,Instruction,Left Operand,Right Operand
 5,000000000000117e,je,"1188 <register_tm_clones+0x38>"
 5,0000000000001180,jmp,*%rax
 5,0000000000001182,nopw,"0x0(%rax,%rax,1)"
-5,0000000000001188,ret,,,
+5,0000000000001188,ret,,
 5,0000000000001189,nopl,0x0(%rax)
 6,0000000000001190,endbr64,,
 6,0000000000001194,cmpb,$0x0,0x2ec5(%rip)

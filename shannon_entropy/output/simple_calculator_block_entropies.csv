@@ -1,0 +1,236 @@
+Block ID,Column,Value,Probability,Entropy
+1,Instruction,call,0.18,2.66
+1,Instruction,lea,0.27,2.66
+1,Instruction,mov,0.18,2.66
+1,Instruction,nopl,0.09,2.66
+1,Instruction,pop,0.09,2.66
+1,Instruction,push,0.09,2.66
+1,Instruction,ret,0.09,2.66
+1,Left Operand,%rbp,0.18,3.12
+1,Left Operand,%rsp,0.09,3.12
+1,Left Operand,0x0(%rax),0.09,3.12
+1,Left Operand,0x2f31(%rip),0.09,3.12
+1,Left Operand,0x2f83(%rip),0.09,3.12
+1,Left Operand,0x2f93(%rip),0.09,3.12
+1,Left Operand,0x2fa6(%rip),0.09,3.12
+1,Left Operand,1040 <__cxa_atexit@plt>,0.09,3.12
+1,Left Operand,1080<_ZNSt8ios_base4InitC1Ev@plt>,0.09,3.12
+1,Right Operand,%rbp,0.09,1.92
+1,Right Operand,%rdi,0.18,1.92
+1,Right Operand,%rdx,0.09,1.92
+1,Right Operand,%rsi,0.09,1.92
+2,Instruction,call,0.17,2.58
+2,Instruction,mov,0.17,2.58
+2,Instruction,nopl,0.17,2.58
+2,Instruction,pop,0.17,2.58
+2,Instruction,push,0.17,2.58
+2,Instruction,ret,0.17,2.58
+2,Left Operand,%rbp,0.33,1.92
+2,Left Operand,%rsp,0.17,1.92
+2,Left Operand,"0x0(%rax,%rax,1)",0.17,1.92
+2,Left Operand,10b0 <__cxx_global_var_init>,0.17,1.92
+2,Right Operand, ,0.17,1.00
+2,Right Operand,%rbp,0.17,1.00
+3,Instruction,and,0.07,3.18
+3,Instruction,call,0.07,3.18
+3,Instruction,cs,0.07,3.18
+3,Instruction,endbr64,0.07,3.18
+3,Instruction,hlt,0.07,3.18
+3,Instruction,lea,0.07,3.18
+3,Instruction,mov,0.13,3.18
+3,Instruction,pop,0.07,3.18
+3,Instruction,push,0.13,3.18
+3,Instruction,xor,0.20,3.18
+3,Left Operand,$0xfffffffffffffff0,0.07,3.42
+3,Left Operand,%ebp,0.07,3.42
+3,Left Operand,%ecx,0.07,3.42
+3,Left Operand,%r8d,0.07,3.42
+3,Left Operand,%rax,0.07,3.42
+3,Left Operand,%rdx,0.07,3.42
+3,Left Operand,%rsi,0.07,3.42
+3,Left Operand,%rsp,0.13,3.42
+3,Left Operand,*0x2eb3(%rip),0.07,3.42
+3,Left Operand,0xd1(%rip),0.07,3.42
+3,Left Operand,nopw,0.07,3.42
+3,Right Operand,%ebp,0.07,3.00
+3,Right Operand,%ecx,0.07,3.00
+3,Right Operand,%r8d,0.07,3.00
+3,Right Operand,%r9,0.07,3.00
+3,Right Operand,%rdi,0.07,3.00
+3,Right Operand,%rdx,0.07,3.00
+3,Right Operand,%rsp,0.07,3.00
+3,Right Operand,"0x0(%rax,%rax,1)",0.07,3.00
+4,Instruction,cmp,0.09,2.91
+4,Instruction,je,0.18,2.91
+4,Instruction,jmp,0.09,2.91
+4,Instruction,lea,0.18,2.91
+4,Instruction,mov,0.09,2.91
+4,Instruction,nopl,0.18,2.91
+4,Instruction,ret,0.09,2.91
+4,Instruction,test,0.09,2.91
+4,Left Operand,%rax,0.09,2.92
+4,Left Operand,%rdi,0.09,2.92
+4,Left Operand,*%rax,0.09,2.92
+4,Left Operand,0x0(%rax),0.18,2.92
+4,Left Operand,0x2e9e(%rip),0.09,2.92
+4,Left Operand,0x2f32(%rip),0.09,2.92
+4,Left Operand,0x2f39(%rip),0.09,2.92
+4,Left Operand,1148 <deregister_tm_clones+0x28>,0.18,2.92
+4,Right Operand,%rax,0.36,0.72
+4,Right Operand,%rdi,0.09,0.72
+5,Instruction,add,0.06,3.50
+5,Instruction,je,0.12,3.50
+5,Instruction,jmp,0.06,3.50
+5,Instruction,lea,0.12,3.50
+5,Instruction,mov,0.12,3.50
+5,Instruction,nopl,0.06,3.50
+5,Instruction,nopw,0.06,3.50
+5,Instruction,ret,0.06,3.50
+5,Instruction,sar,0.12,3.50
+5,Instruction,shr,0.06,3.50
+5,Instruction,sub,0.06,3.50
+5,Instruction,test,0.06,3.50
+5,Left Operand,$0x3,0.06,3.51
+5,Left Operand,$0x3f,0.06,3.51
+5,Left Operand,%rax,0.12,3.51
+5,Left Operand,%rdi,0.06,3.51
+5,Left Operand,%rsi,0.12,3.51
+5,Left Operand,*%rax,0.06,3.51
+5,Left Operand,0x0(%rax),0.06,3.51
+5,Left Operand,"0x0(%rax,%rax,1)",0.06,3.51
+5,Left Operand,0x2e75(%rip),0.06,3.51
+5,Left Operand,0x2f02(%rip),0.06,3.51
+5,Left Operand,0x2f09(%rip),0.06,3.51
+5,Left Operand,1188 <register_tm_clones+0x38>,0.12,3.51
+5,Right Operand,%rax,0.25,1.39
+5,Right Operand,%rdi,0.06,1.39
+5,Right Operand,%rsi,0.25,1.39
+6,Instruction,call,0.12,3.50
+6,Instruction,cmpb,0.06,3.50
+6,Instruction,cmpq,0.06,3.50
+6,Instruction,endbr64,0.06,3.50
+6,Instruction,je,0.06,3.50
+6,Instruction,jne,0.06,3.50
+6,Instruction,mov,0.12,3.50
+6,Instruction,movb,0.06,3.50
+6,Instruction,nopl,0.12,3.50
+6,Instruction,pop,0.06,3.50
+6,Instruction,push,0.06,3.50
+6,Instruction,ret,0.12,3.50
+6,Left Operand,$0x0,0.12,3.39
+6,Left Operand,$0x1,0.06,3.39
+6,Left Operand,%rbp,0.12,3.39
+6,Left Operand,%rsp,0.06,3.39
+6,Left Operand,(%rax) ,0.06,3.39
+6,Left Operand,0x0(%rax),0.06,3.39
+6,Left Operand,0x2ea6(%rip),0.06,3.39
+6,Left Operand,10a0 <__cxa_finalize@plt>,0.06,3.39
+6,Left Operand,1120 <deregister_tm_clones>,0.06,3.39
+6,Left Operand,11b7 <__do_global_dtors_aux+0x27>,0.06,3.39
+6,Left Operand,11c8 <__do_global_dtors_aux+0x38>,0.06,3.39
+6,Right Operand,%rbp,0.06,2.32
+6,Right Operand,%rdi,0.06,2.32
+6,Right Operand,0x2e12(%rip) ,0.06,2.32
+6,Right Operand,0x2e9d(%rip) ,0.06,2.32
+6,Right Operand,0x2ec5(%rip),0.06,2.32
+7,Instruction,endbr64,0.33,1.58
+7,Instruction,jmp,0.33,1.58
+7,Instruction,nopl,0.33,1.58
+7,Left Operand,0x0(%rax),0.33,1.00
+7,Left Operand,1150 <register_tm_clones>,0.33,1.00
+8,Instruction,add,0.02,2.98
+8,Instruction,addsd,0.01,2.98
+8,Instruction,call,0.25,2.98
+8,Instruction,divsd,0.01,2.98
+8,Instruction,ja,0.01,2.98
+8,Instruction,jmp,0.04,2.98
+8,Instruction,jne,0.01,2.98
+8,Instruction,jp,0.01,2.98
+8,Instruction,lea,0.12,2.98
+8,Instruction,mov,0.34,2.98
+8,Instruction,movl,0.01,2.98
+8,Instruction,movsbl,0.01,2.98
+8,Instruction,movsd,0.10,2.98
+8,Instruction,movslq,0.01,2.98
+8,Instruction,mulsd,0.01,2.98
+8,Instruction,pop,0.01,2.98
+8,Instruction,push,0.01,2.98
+8,Instruction,ret,0.01,2.98
+8,Instruction,sub,0.01,2.98
+8,Instruction,subsd,0.01,2.98
+8,Instruction,ucomisd,0.01,2.98
+8,Instruction,xor,0.01,2.98
+8,Instruction,xorps,0.01,2.98
+8,Left Operand,$0x0,0.01,4.85
+8,Left Operand,$0x30,0.01,4.85
+8,Left Operand,$0x5,0.01,4.85
+8,Left Operand,$0xffffffd6,0.01,4.85
+8,Left Operand,%eax,0.01,4.85
+8,Left Operand,%rax,0.17,4.85
+8,Left Operand,%rbp,0.01,4.85
+8,Left Operand,%rcx,0.01,4.85
+8,Left Operand,%rdi,0.01,4.85
+8,Left Operand,%rsp,0.01,4.85
+8,Left Operand,%xmm1,0.01,4.85
+8,Left Operand,"(%rcx,%rax,4)",0.01,4.85
+8,Left Operand,*%rax,0.01,4.85
+8,Left Operand,-0x10(%rbp),0.07,4.85
+8,Left Operand,-0x18(%rbp),0.07,4.85
+8,Left Operand,-0x20(%rbp),0.01,4.85
+8,Left Operand,-0x28(%rbp),0.01,4.85
+8,Left Operand,-0x30(%rbp),0.01,4.85
+8,Left Operand,-0x5(%rbp),0.01,4.85
+8,Left Operand,0x2b6f(%rip),0.01,4.85
+8,Left Operand,0x2b95(%rip),0.01,4.85
+8,Left Operand,0x2b96(%rip),0.01,4.85
+8,Left Operand,0x2bf2(%rip),0.01,4.85
+8,Left Operand,0x2bf8(%rip),0.01,4.85
+8,Left Operand,0x2c1e(%rip),0.01,4.85
+8,Left Operand,0x2c37(%rip),0.01,4.85
+8,Left Operand,0x2c93(%rip),0.01,4.85
+8,Left Operand,0x2c99(%rip),0.01,4.85
+8,Left Operand,0x2cf5(%rip),0.01,4.85
+8,Left Operand,0x2cfb(%rip),0.01,4.85
+8,Left Operand,0x2d57(%rip),0.01,4.85
+8,Left Operand,0x2dd3(%rip),0.01,4.85
+8,Left Operand,0x2dda(%rip),0.01,4.85
+8,Left Operand,0xc3b(%rip),0.01,4.85
+8,Left Operand,0xc4c(%rip),0.01,4.85
+8,Left Operand,0xc8c(%rip),0.01,4.85
+8,Left Operand,0xca8(%rip),0.01,4.85
+8,Left Operand,0xced(%rip),0.01,4.85
+8,Left Operand,0xd11(%rip),0.01,4.85
+8,Left Operand,0xd4f(%rip),0.01,4.85
+8,Left Operand,0xd6f(%rip),0.01,4.85
+8,Left Operand,0xda0(%rip),0.01,4.85
+8,Left Operand,0xdb1(%rip),0.01,4.85
+8,Left Operand,0xdc9(%rip),0.01,4.85
+8,Left Operand,0xe18(%rip),0.01,4.85
+8,Left Operand,0xe1b(%rip),0.01,4.85
+8,Left Operand,1030 <_ZNSirsERd@plt>,0.01,4.85
+8,Left Operand,1050 <_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@plt>,0.09,4.85
+8,Left Operand,1060 <_ZNSolsEPFRSoS_E@plt>,0.04,4.85
+8,Left Operand,1070 <_ZStrsIcSt11char_traitsIcEERSt13basic_istreamIT_T0_ES6_RS3_@plt>,0.01,4.85
+8,Left Operand,1090 <_ZNSolsEd@plt>,0.09,4.85
+8,Left Operand,13d2 <main+0x1f2>,0.01,4.85
+8,Left Operand,142f <main+0x24f>,0.01,4.85
+8,Left Operand,1434 <main+0x254>,0.01,4.85
+8,Left Operand,1456 <main+0x276>,0.03,4.85
+8,Right Operand, ,0.01,3.14
+8,Right Operand,%eax,0.03,3.14
+8,Right Operand,%ecx,0.01,3.14
+8,Right Operand,%rax,0.02,3.14
+8,Right Operand,%rbp,0.01,3.14
+8,Right Operand,%rcx,0.01,3.14
+8,Right Operand,%rdi,0.21,3.14
+8,Right Operand,%rdi ,0.04,3.14
+8,Right Operand,%rsi,0.13,3.14
+8,Right Operand,%rsi ,0.02,3.14
+8,Right Operand,%rsp,0.01,3.14
+8,Right Operand,%xmm0,0.11,3.14
+8,Right Operand,%xmm0 ,0.02,3.14
+8,Right Operand,%xmm1 ,0.01,3.14
+8,Right Operand,-0x20(%rbp),0.01,3.14
+8,Right Operand,-0x28(%rbp),0.01,3.14
+8,Right Operand,-0x30(%rbp),0.01,3.14
+8,Right Operand,-0x4(%rbp),0.01,3.14
