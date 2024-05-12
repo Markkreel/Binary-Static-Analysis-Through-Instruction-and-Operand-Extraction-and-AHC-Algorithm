@@ -14,7 +14,7 @@ Block_ID,Address,Instruction,Left Operand,Right Operand
 2,00000000000010b1,mov,%rsp,%rbp
 2,00000000000010b4,call,1080<__cxx_global_var_init>,
 2,00000000000010b9,pop,%rbp,
-2,00000000000010ba,ret
+2,00000000000010ba,ret,,
 2,00000000000010bb,nopl,"0x0(%rax,%rax,1)",
 3,00000000000010c0,endbr64,
 3,00000000000010c4,xor,%ebp,%ebp
