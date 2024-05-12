@@ -1,5 +1,5 @@
 Block_ID,Address,Instruction,Left Operand,Right Operand
-__cxx_global_var_init,00000000000021f0:,push,%rbp,
+1,00000000000021f0:,push,%rbp,
 1,00000000000021f1:,mov,%rsp,%rbp
 1,00000000000021f4:,lea,0x5f0e(%rip),%rdi
 1,00000000000021fb:,call,2170 <_ZNSt8ios_base4InitC1Ev@plt>,
