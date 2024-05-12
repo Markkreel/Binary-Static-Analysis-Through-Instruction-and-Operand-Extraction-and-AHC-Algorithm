@@ -146,7 +146,7 @@ Block_ID,Address,Instruction,Left Operand,Right Operand
 8,0000000000001308,call,1420<_ZN12DynamicArrayIiED2Ev>,
 8,000000000000130d,mov,-0x4(%rbp),%eax
 8,0000000000001310,add,$0x50,%rsp
-8,0000000000001314,pop,%rbp
+8,0000000000001314,pop,%rbp,
 8,0000000000001315,ret,,
 8,0000000000001316,mov,-0x28(%rbp),%rdi
 8,000000000000131a,call,10a0<_Unwind_Resume@plt>,
@@ -164,9 +164,9 @@ Block_ID,Address,Instruction,Left Operand,Right Operand
 9,0000000000001340,mov,%ecx,0xc(%rax)
 9,0000000000001343,movslq,0xc(%rax),%rax
 9,0000000000001347,mov,$0x4,%ecx
-9,000000000000134c,mul,%rcx
+9,000000000000134c,mul,%rcx,
 9,000000000000134f,mov,%rax,%rdi
-9,0000000000001352,seto,%al
+9,0000000000001352,seto,%al,
 9,0000000000001355,mov,$0xffffffffffffffff,%rax
 9,000000000000135c,cmovo,%rax,%rdi
 9,0000000000001360,call,1030<_Znam@plt>,
@@ -174,12 +174,12 @@ Block_ID,Address,Instruction,Left Operand,Right Operand
 9,0000000000001368,mov,-0x18(%rbp),%rax
 9,000000000000136c,mov,%rcx,(%rax)
 9,000000000000136f,add,$0x20,%rsp
-9,0000000000001373,pop,%rbp
+9,0000000000001373,pop,%rbp,
 9,0000000000001374,ret,,
 9,0000000000001375,csnopw,"0x0(%rax,%rax,1)",
 9,000000000000137c,,,
 9,000000000000137f,nop,,
-10,0000000000001380,push,%rbp
+10,0000000000001380,push,%rbp,
 10,0000000000001381,mov,%rsp,%rbp
 10,0000000000001384,sub,$0x20,%rsp
 10,0000000000001388,mov,%rdi,-0x8(%rbp)
