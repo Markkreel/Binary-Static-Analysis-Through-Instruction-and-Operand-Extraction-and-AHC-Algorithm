@@ -29,7 +29,7 @@ Block_ID,Address,Instruction,Left Operand,Right Operand
 3,0000000000001108,lea,0xd1(%rip),%rdi
 3,000000000000110f,call,*0x2eb3(%rip),
 3,0000000000001115,hlt,,
-3,0000000000001116,cs,nopw,"0x0(%rax,%rax,1)",
+3,0000000000001116,cs,nopw,"0x0(%rax,%rax,1)"
 3,000000000000111d,,,
 4,0000000000001120,lea,0x2f39(%rip),%rdi
 4,0000000000001127,lea,0x2f32(%rip),%rax
