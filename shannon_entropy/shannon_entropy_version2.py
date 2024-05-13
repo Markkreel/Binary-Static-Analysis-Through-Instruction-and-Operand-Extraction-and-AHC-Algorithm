@@ -12,7 +12,7 @@ def calculate_entropy(probabilities):
 
 # Read the CSV file and compute probabilities and entropies
 with open(
-    r"C:\External\Projects\8th Semester\Thesis\compiled\csv_parser_disassembled\csv_parser_disassembly.csv",
+    r"C:\External\Projects\8th Semester\Thesis\compiled\dynamic_array_allocator_disassembled\dynamic_array_allocator_diassembly.csv",
     newline="",
 ) as csvfile:
     reader = csv.DictReader(csvfile)
@@ -76,7 +76,11 @@ for block_id, count in block_counts.items():
             )
 
 # Write results to a new CSV file
-with open("entropy_results_2.csv", "w", newline="") as csvfile:
+with open(
+    "C:\External\Projects\8th Semester\Thesis\shannon_entropy\output\dynamic_array_allocator_entropy\dynamic_array_allocator_entropy_2.csv",
+    "w",
+    newline="",
+) as csvfile:
     writer = csv.writer(csvfile)
     writer.writerow(["Block_ID", "Type", "Value", "Probability", "Entropy"])
     writer.writerows(results)

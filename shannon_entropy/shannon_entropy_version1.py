@@ -22,7 +22,7 @@ def calculate_entropy(data):
 def main():
     # Replace 'your_dataset.csv' with the actual path to your CSV file
     with open(
-        "C:\External\Projects\8th Semester\Thesis\compiled\csv_parser_disassembled\csv_parser_disassembly.csv",
+        "C:\External\Projects\8th Semester\Thesis\compiled\dynamic_array_allocator_disassembled\dynamic_array_allocator_diassembly.csv",
         "r",
     ) as csvfile:
         reader = csv.DictReader(csvfile)
@@ -42,7 +42,11 @@ def main():
             block_data[block_id]["Right Operand"].append(row["Right Operand"])
 
         # Write entropy results to a new CSV file
-        with open("entropy_results_1.csv", "w", newline="") as csvfile:
+        with open(
+            "C:\External\Projects\8th Semester\Thesis\shannon_entropy\output\dynamic_array_allocator_entropy\dynamic_array_allocator_entropy_1.csv",
+            "w",
+            newline="",
+        ) as csvfile:
             writer = csv.writer(csvfile)
             writer.writerow(["Block_ID", "Type", "Value", "Probability", "Entropy"])
             for block_id, block_info in block_data.items():
