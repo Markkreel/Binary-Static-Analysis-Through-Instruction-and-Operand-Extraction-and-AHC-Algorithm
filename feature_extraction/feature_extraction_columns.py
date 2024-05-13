@@ -1,8 +1,10 @@
 """
 This code uses the OS and CSV modules.
 """
+
 import os
 import csv
+
 
 def parse_disassembly(disassembly_text):
     """Parses the disassembly text.
@@ -19,18 +21,21 @@ def parse_disassembly(disassembly_text):
     current_addr = None
 
     for line in disassembly_text.splitlines():
-        if line.endswith(':'):  # Address line
+        if line.endswith(":"):  # Address line
             current_addr = line.split()[0]
             results[current_addr] = []
         elif line.strip():  # Instruction lines
-            parts = line.strip().split('\t')[-1].split()
+            parts = line.strip().split("\t")[-1].split()
             results[current_addr].append(parts)
 
     return results
 
+
 # Read disassembly from file
-INPUT_FILE = r"C:\External\Projects\8th Semester\Thesis\feature_extraction\disassembled_test.txt"
-with open(INPUT_FILE, 'r', encoding='utf-8') as file:
+INPUT_FILE = (
+    r"C:\External\Projects\8th Semester\Thesis\feature_extraction\disassembled_test.txt"
+)
+with open(INPUT_FILE, "r", encoding="utf-8") as file:
     disassembly = file.read()
 
 # Process the disassembly
@@ -46,7 +51,7 @@ os.makedirs(OUTPUT_DIRECTORY, exist_ok=True)
 output_csv_file_path = os.path.join(OUTPUT_DIRECTORY, "disassembly_output_columns.csv")
 
 # Export to CSV
-with open(output_csv_file_path, 'w', newline='', encoding='utf-8') as csvfile:
+with open(output_csv_file_path, "w", newline="", encoding="utf-8") as csvfile:
     writer = csv.writer(csvfile)
 
     # Write the header row (block addresses)
@@ -60,7 +65,7 @@ with open(output_csv_file_path, 'w', newline='', encoding='utf-8') as csvfile:
             if i < len(instructions[addr]):
                 row.extend(instructions[addr][i])  # Add instruction/operands
             else:
-                row.append('')  # Fill blank cells
+                row.append("")  # Fill blank cells
         writer.writerow(row)
 
 print("Output CSV file saved to:", output_csv_file_path)

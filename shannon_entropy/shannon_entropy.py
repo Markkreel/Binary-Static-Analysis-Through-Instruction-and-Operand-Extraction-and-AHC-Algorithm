@@ -1,61 +1,59 @@
-import pandas as pd
-import numpy as np
-from scipy.stats import entropy
-import re
-
-def calculate_entropy(probabilities):
-    """Calculates Shannon Entropy given a dictionary of probabilities."""
-    return entropy(list(probabilities.values()), base=2)
-
-def extract_values_from_brackets(value):
-    """Extracts values within brackets and returns them as a single string."""
-    if pd.isna(value):
-        return ""
-    bracket_values = re.findall(r'\((.*?)\)', value)
-    return ','.join(bracket_values)
+import csv
+from math import log2
 
 
-def calculate_entropies_for_blocks(df):
-    """Calculates Shannon Entropy for distinct data points within each block."""
-    entropies = {}
-    columns = ['Instruction', 'Left Operand', 'Right Operand']
-    for block_id, block_data in df.groupby('Block_ID'):
-        block_entropies = {}
-        total_data = len(block_data)
-        for column in columns:
-            if column == 'Right Operand':
-                # Extract values from brackets for Right Operand column
-                block_data[column] = block_data[column].apply(extract_values_from_brackets)
-            unique_values, counts = np.unique(block_data[column].dropna(), return_counts=True)
-            probabilities = {value: count / total_data for value, count in zip(unique_values, counts)}
-            entropy_value = calculate_entropy(probabilities)
-            block_entropies[column] = {'probabilities': probabilities, 'entropy': entropy_value}
-        entropies[block_id] = block_entropies
-    return entropies
+def calculate_entropy(data):
+    """
+    Calculates the entropy of a given data list using Shannon Entropy equation.
 
-def save_entropies_to_csv(entropies, OUTPUT_FILE):
-    """Saves the calculated entropies to a CSV file."""
-    with open(OUTPUT_FILE, 'w', encoding='utf-8') as file:
-        file.write("Block ID,Column,Value,Probability,Entropy\n")
-        for block_id, block_entropies in entropies.items():
-            for column, data in block_entropies.items():
-                for value, probability in data['probabilities'].items():
-                    entropy_value = data['entropy']
-                    file.write(f"{block_id},{column},{value},{probability:.2f},{entropy_value:.2f}\n")
+    Args:
+        data: A list of data points.
+
+    Returns:
+        The entropy of the data.
+    """
+    entropy = 0
+    for value in set(data):
+        probability = data.count(value) / len(data)
+        entropy -= probability * log2(probability)
+    return entropy
+
 
 def main():
-    """The main function is where I input the INPUT_FILE and where the print process is."""
-    # Load the CSV file into a DataFrame
-    INPUT_FILE = r"compiled\csv_parser_disassembled\csv_parser_disassembly.csv"
-    df = pd.read_csv(INPUT_FILE)
+    # Replace 'your_dataset.csv' with the actual path to your CSV file
+    with open(
+        "C:\External\Projects\8th Semester\Thesis\compiled\csv_parser_disassembled\csv_parser_disassembly.csv",
+        "r",
+    ) as csvfile:
+        reader = csv.DictReader(csvfile)
 
-    # Calculate Shannon Entropy for distinct data points within each block
-    block_entropies = calculate_entropies_for_blocks(df)
+        # Initialize empty dictionaries to store counts
+        block_data = {}
+        for row in reader:
+            block_id = row["Block_ID"]
+            if block_id not in block_data:
+                block_data[block_id] = {
+                    "Instruction": [],
+                    "Left Operand": [],
+                    "Right Operand": [],
+                }
+            block_data[block_id]["Instruction"].append(row["Instruction"])
+            block_data[block_id]["Left Operand"].append(row["Left Operand"])
+            block_data[block_id]["Right Operand"].append(row["Right Operand"])
 
-    # Save the calculated entropies to a CSV file
-    OUTPUT_FILE = "hello_world_block_entropies.csv"
-    save_entropies_to_csv(block_entropies, OUTPUT_FILE)
-    print(f"Entropies saved to '{OUTPUT_FILE}'.")
+        # Write entropy results to a new CSV file
+        with open("entropy_results_1.csv", "w", newline="") as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(["Block_ID", "Type", "Value", "Probability", "Entropy"])
+            for block_id, block_info in block_data.items():
+                for data_type, data_list in block_info.items():
+                    for value in set(data_list):
+                        probability = data_list.count(value) / len(data_list)
+                        entropy = calculate_entropy(data_list)
+                        writer.writerow(
+                            [block_id, data_type, value, probability, entropy]
+                        )
+
 
 if __name__ == "__main__":
     main()

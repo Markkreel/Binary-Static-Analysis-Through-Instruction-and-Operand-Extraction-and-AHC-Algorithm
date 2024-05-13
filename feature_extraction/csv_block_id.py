@@ -13,17 +13,17 @@ block_id_map = {}
 
 # Iterate through rows (excluding the header)
 for index, row in df.iterrows():
-  if index == 0:
-    continue  # Skip the header row
+    if index == 0:
+        continue  # Skip the header row
 
-  # Get the Block_ID and check if it's already seen
-  current_block_id = row["Block_ID"]
-  if current_block_id not in block_id_map:
-    block_id_map[current_block_id] = block_id
-    block_id += 1  # Increment counter for new unique IDs
+    # Get the Block_ID and check if it's already seen
+    current_block_id = row["Block_ID"]
+    if current_block_id not in block_id_map:
+        block_id_map[current_block_id] = block_id
+        block_id += 1  # Increment counter for new unique IDs
 
-  # Update the Block_ID with the numerical ID
-  row["Block_ID"] = block_id_map[current_block_id]
+    # Update the Block_ID with the numerical ID
+    row["Block_ID"] = block_id_map[current_block_id]
 
 # Update the DataFrame with the modified values
 df.update(df)
