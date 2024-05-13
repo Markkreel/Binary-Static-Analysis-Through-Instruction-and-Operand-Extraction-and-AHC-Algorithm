@@ -1,8 +1,17 @@
-import csv
-import math
+import csv  # Importing the CSV module to read and write CSV files
+import math  # Importing the math module to perform mathematical calculations
 
 
 def calculate_entropy(probabilities):
+    """
+    Calculate the Shannon entropy given a list of probabilities.
+
+    Args:
+        probabilities (list): List of probabilities.
+
+    Returns:
+        float: Shannon entropy value.
+    """
     entropy = 0
     for prob in probabilities:
         if prob != 0:
@@ -12,24 +21,23 @@ def calculate_entropy(probabilities):
 
 # Read the CSV file and compute probabilities and entropies
 with open(
-    r"C:\External\Projects\8th Semester\Thesis\compiled\dynamic_array_allocator_disassembled\dynamic_array_allocator_diassembly.csv",
+    r"C:\External\Projects\8th Semester\Thesis\compiled\csv_parser_disassembled\csv_parser_disassembly.csv",
     newline="",
 ) as csvfile:
-    reader = csv.DictReader(csvfile)
+    reader = csv.DictReader(csvfile)  # Creating a CSV reader object
 
     # Initialize dictionaries to store probabilities and counts
-    instruction_counts = {}
-    left_operand_counts = {}
-    right_operand_counts = {}
-
-    block_counts = {}
+    instruction_counts = {}  # Dictionary to store counts of instructions
+    left_operand_counts = {}  # Dictionary to store counts of left operands
+    right_operand_counts = {}  # Dictionary to store counts of right operands
+    block_counts = {}  # Dictionary to store counts of block IDs
 
     # Count occurrences of each instruction, left operand, right operand, and block ID
     for row in reader:
-        block_id = int(row["Block_ID"])
-        instruction = row["Instruction"]
-        left_operand = row["Left Operand"]
-        right_operand = row["Right Operand"]
+        block_id = int(row["Block_ID"])  # Extracting block ID from the row
+        instruction = row["Instruction"]  # Extracting instruction from the row
+        left_operand = row["Left Operand"]  # Extracting left operand from the row
+        right_operand = row["Right Operand"]  # Extracting right operand from the row
 
         # Update block counts
         block_counts[block_id] = block_counts.get(block_id, 0) + 1
@@ -76,11 +84,9 @@ for block_id, count in block_counts.items():
             )
 
 # Write results to a new CSV file
-with open(
-    "C:\External\Projects\8th Semester\Thesis\shannon_entropy\output\dynamic_array_allocator_entropy\dynamic_array_allocator_entropy_2.csv",
-    "w",
-    newline="",
-) as csvfile:
+with open("entropy_results.csv", "w", newline="") as csvfile:
     writer = csv.writer(csvfile)
-    writer.writerow(["Block_ID", "Type", "Value", "Probability", "Entropy"])
-    writer.writerows(results)
+    writer.writerow(
+        ["Block_ID", "Type", "Value", "Probability", "Entropy"]
+    )  # Writing header row
+    writer.writerows(results)  # Writing results to the CSV file
