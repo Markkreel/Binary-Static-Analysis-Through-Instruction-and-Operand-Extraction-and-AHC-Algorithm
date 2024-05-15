@@ -22,10 +22,11 @@ def calculate_probability_distributions(input_file):
 
 
 # Function to calculate KL-Divergence between two probability distributions
-# Function to calculate KL-Divergence between two probability distributions
 def calculate_kl_divergence(p, q):
-    kl_divergence = np.sum(np.where(p != 0, p * np.log2(p / q), 0))
-    return kl_divergence if not np.isinf(kl_divergence) else 0
+    epsilon = 1e-10  # small constant to avoid log(0)
+    p = np.array(p) + epsilon
+    q = np.array(q) + epsilon
+    return np.sum(p * np.log2(p / q))
 
 
 # Function to calculate similarity between blocks using KL-Divergence
@@ -39,12 +40,10 @@ def calculate_block_similarity(block_probabilities):
             similarity = 0
             for variable_type, probabilities1 in block_probabilities[block_id1].items():
                 probabilities2 = block_probabilities[block_id2].get(variable_type, {})
-                for assembly, probability1 in probabilities1.items():
-                    probability2 = probabilities2.get(assembly, 0)
-                    similarity += calculate_kl_divergence(
-                        np.array([probability1, probability2]),
-                        np.array([probability2, probability1]),
-                    )
+                all_assemblies = set(probabilities1.keys()).union(probabilities2.keys())
+                p = [probabilities1.get(assembly, 0) for assembly in all_assemblies]
+                q = [probabilities2.get(assembly, 0) for assembly in all_assemblies]
+                similarity += calculate_kl_divergence(p, q)
             block_similarity[(block_id1, block_id2)] = similarity
     return block_similarity
 
@@ -60,18 +59,27 @@ def write_similarity_to_csv(similarity, output_file):
 
 # Main function
 def main():
-    input_file = "entropy\hello_world_entropy.csv"
-    output_file = "block_similarity_output.csv"
+    input_file = "entropy/hello_world_entropy.csv"
+    input_file_filtered = "entropy_preprocessed/hello_world_filtered_entropy.csv"
+    output_file = "similarity/hello_world_block_similarity.csv"
+    output_file_filtered = "similarity/hello_world_filtered_block_similarity.csv"
 
     # Calculate probability distributions of variables within each block
     block_probabilities = calculate_probability_distributions(input_file)
+    block_probabilities_filtered = calculate_probability_distributions(
+        input_file_filtered
+    )
 
     # Calculate similarity between blocks using KL-Divergence
     block_similarity = calculate_block_similarity(block_probabilities)
+    block_similarity_filtered = calculate_block_similarity(block_probabilities_filtered)
 
     # Write block similarity to CSV file
     write_similarity_to_csv(block_similarity, output_file)
     print("Block Similarity written to:", output_file)
+
+    write_similarity_to_csv(block_similarity_filtered, output_file_filtered)
+    print("Block Similarity written to:", output_file_filtered)
 
 
 if __name__ == "__main__":
