@@ -22,10 +22,11 @@ def calculate_probability_distributions(INPUT_FILE):
 
 
 # Function to calculate KL-Divergence between two probability distributions
-# Function to calculate KL-Divergence between two probability distributions
 def calculate_kl_divergence(p, q):
-    kl_divergence = np.sum(np.where(p != 0, p * np.log2(p / q), 0))
-    return kl_divergence if not np.isinf(kl_divergence) else 0
+    epsilon = 1e-10  # small constant to avoid log(0)
+    p = np.array(p) + epsilon
+    q = np.array(q) + epsilon
+    return np.sum(p * np.log2(p / q))
 
 
 # Function to calculate similarity between blocks using KL-Divergence
@@ -39,12 +40,10 @@ def calculate_block_similarity(block_probabilities):
             similarity = 0
             for variable_type, probabilities1 in block_probabilities[block_id1].items():
                 probabilities2 = block_probabilities[block_id2].get(variable_type, {})
-                for assembly, probability1 in probabilities1.items():
-                    probability2 = probabilities2.get(assembly, 0)
-                    similarity += calculate_kl_divergence(
-                        np.array([probability1, probability2]),
-                        np.array([probability2, probability1]),
-                    )
+                all_assemblies = set(probabilities1.keys()).union(probabilities2.keys())
+                p = [probabilities1.get(assembly, 0) for assembly in all_assemblies]
+                q = [probabilities2.get(assembly, 0) for assembly in all_assemblies]
+                similarity += calculate_kl_divergence(p, q)
             block_similarity[(block_id1, block_id2)] = similarity
     return block_similarity
 
@@ -60,10 +59,10 @@ def write_similarity_to_csv(similarity, OUTPUT_FILE):
 
 # Main function
 def main():
-    INPUT_FILE = "entropy\hello_world_entropy.csv"
-    INPUT_FILE_FILTERED = "entropy_preprocessed\hello_world_filtered_entropy.csv"
-    OUTPUT_FILE = "similarity\hello_world_block_similarity.csv"
-    OUTPUT_FILE_FILTERED = "similarity\hello_world_filtered_block_similarity.csv"
+    INPUT_FILE = "entropy\csv_parser_entropy.csv"
+    INPUT_FILE_FILTERED = "entropy_preprocessed\csv_parser_filtered_entropy.csv"
+    OUTPUT_FILE = "similarity\csv_parser_block_similarity\csv_parser_block_similarity_normalized.csv"
+    OUTPUT_FILE_FILTERED = "similarity\csv_parser_block_similarity\csv_parser_filtered_block_similarity_normalized.csv"
 
     # Calculate probability distributions of variables within each block
     block_probabilities = calculate_probability_distributions(INPUT_FILE)
