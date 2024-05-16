@@ -69,8 +69,8 @@ def visualize_clusters_pca(distance_matrix, clusters, block_ids):
 
 # Main function
 def main():
-    input_file = "similarity\simple_calculator_block_similarity\simple_calculator_filtered_block_similarity_normalized.csv"
-    block_ids = [str(i) for i in range(1, 9)]  # Example with 100 blocks
+    input_file = "similarity\csv_parser_block_similarity\csv_parser_filtered_block_similarity_normalized.csv"
+    block_ids = [str(i) for i in range(1, 153)]  # Example with 100 blocks
 
     # Read the similarity matrix
     similarity_matrix = read_similarity_matrix(input_file, block_ids)
@@ -90,7 +90,7 @@ def main():
     visualize_clusters_pca(distance_matrix, clusters, block_ids)
 
     # (Optional) Write clusters to CSV
-    output_file = "clusters_pca.csv"
+    output_file = "csv_parser_clusters_pca.csv"
     with open(output_file, "w", newline="") as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(["Block_ID", "Cluster"])
