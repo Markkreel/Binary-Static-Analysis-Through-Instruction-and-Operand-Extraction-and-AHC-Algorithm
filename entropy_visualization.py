@@ -79,7 +79,7 @@ def calculate_variable_type_entropy_statistics(input_file):
 
 # Main function
 def main():
-    input_file = "entropy/csv_parser_entropy.csv"
+    input_file = "entropy\csv_parser_entropy.csv"
     block_id = input("Enter the Block ID to visualize: ")
 
     # Read the entropy data for the specified block
