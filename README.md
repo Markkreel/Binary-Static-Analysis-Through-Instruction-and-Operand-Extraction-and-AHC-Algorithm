@@ -76,5 +76,5 @@ This section explains how to visualize the similarity between blocks using `simi
    * Darker colors (closer to black) typically correspond to higher similarities (lower KL divergence values) between blocks.
    * Lighter colors (closer to white) usually indicate lower similarities (higher KL divergence values).
 * The range of displayed similarity values typically falls between 0 (most similar) and positive infinity (completely dissimilar).
-## Benefits
+### Benefits
 Heatmaps provide a convenient way to quickly identify blocks with high similarity scores, potentially suggesting similar functionalities. Futhermore, visualizing the entire matrix allows for a more comprehensive understanding of the relationships between all blocks.
