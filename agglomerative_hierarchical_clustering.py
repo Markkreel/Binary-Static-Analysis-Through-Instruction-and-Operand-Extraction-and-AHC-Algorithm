@@ -71,7 +71,7 @@ def write_clusters_to_csv(block_ids, clusters, OUTPUT_FILE):
 # Main function
 def main():
     INPUT_FILE = "similarity\csv_parser_block_similarity\csv_parser_block_similarity_normalized.csv"
-    OUTPUT_FILE = "clusters.csv"
+    OUTPUT_FILE = "csv_parser_clusters.csv"
     block_ids = [str(i) for i in range(1, 153)]  # Example with 100 blocks
 
     # Read the similarity matrix

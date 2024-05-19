@@ -78,7 +78,7 @@ def plot_cluster_entropies(cluster_entropies):
 
 # Main function
 def main():
-    cluster_file = "csv_parser_clusters_pca.csv"
+    cluster_file = "csv_parser_clusters.csv"
     entropy_file = "entropy_preprocessed\csv_parser_filtered_entropy.csv"
 
     # Read cluster assignments and entropy data
