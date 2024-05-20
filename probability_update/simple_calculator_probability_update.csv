@@ -1,0 +1,67 @@
+Block_ID,Type,Assembly,Probability
+1,Instruction,lea,1.0
+1,Left Operand,%rbp,1.0
+1,Right Operand,%rdi,1.0
+2,Instruction,call,0.16666666666666666
+2,Instruction,mov,0.16666666666666666
+2,Instruction,nopl,0.16666666666666666
+2,Instruction,pop,0.16666666666666666
+2,Instruction,push,0.16666666666666666
+2,Instruction,ret,0.16666666666666666
+2,Left Operand,%rbp,1.0
+2,Right Operand, ,0.5
+2,Right Operand,%rbp,0.5
+3,Instruction,mov,0.3333333333333333
+3,Instruction,push,0.3333333333333333
+3,Instruction,xor,0.3333333333333333
+3,Left Operand,%rsp,1.0
+3,Right Operand,%ebp,0.125
+3,Right Operand,%ecx,0.125
+3,Right Operand,%r8d,0.125
+3,Right Operand,%r9,0.125
+3,Right Operand,%rdi,0.125
+3,Right Operand,%rdx,0.125
+3,Right Operand,%rsp,0.125
+3,Right Operand,"0x0(%rax,%rax,1)",0.125
+4,Instruction,je,0.3333333333333333
+4,Instruction,lea,0.3333333333333333
+4,Instruction,nopl,0.3333333333333333
+4,Left Operand,0x0(%rax),0.5
+4,Left Operand,1148 <deregister_tm_clones+0x28>,0.5
+4,Right Operand,%rax,1.0
+5,Instruction,je,0.25
+5,Instruction,lea,0.25
+5,Instruction,mov,0.25
+5,Instruction,sar,0.25
+5,Left Operand,%rax,0.3333333333333333
+5,Left Operand,%rsi,0.3333333333333333
+5,Left Operand,1188 <register_tm_clones+0x38>,0.3333333333333333
+6,Instruction,call,0.25
+6,Instruction,mov,0.25
+6,Instruction,nopl,0.25
+6,Instruction,ret,0.25
+6,Left Operand,$0x0,0.5
+6,Left Operand,%rbp,0.5
+6,Right Operand,%rbp,0.2
+6,Right Operand,%rdi,0.2
+6,Right Operand,0x2e12(%rip) ,0.2
+6,Right Operand,0x2e9d(%rip) ,0.2
+6,Right Operand,0x2ec5(%rip),0.2
+7,Instruction,endbr64,0.3333333333333333
+7,Instruction,jmp,0.3333333333333333
+7,Instruction,nopl,0.3333333333333333
+7,Left Operand,0x0(%rax),0.5
+7,Left Operand,1150 <register_tm_clones>,0.5
+8,Instruction,call,0.25
+8,Instruction,lea,0.25
+8,Instruction,mov,0.25
+8,Instruction,movsd,0.25
+8,Left Operand,%rax,0.16666666666666666
+8,Left Operand,-0x10(%rbp),0.16666666666666666
+8,Left Operand,-0x18(%rbp),0.16666666666666666
+8,Left Operand,1050 <_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@plt>,0.16666666666666666
+8,Left Operand,1060 <_ZNSolsEPFRSoS_E@plt>,0.16666666666666666
+8,Left Operand,1090 <_ZNSolsEd@plt>,0.16666666666666666
+8,Right Operand,%rdi,0.3333333333333333
+8,Right Operand,%rsi,0.3333333333333333
+8,Right Operand,%xmm0,0.3333333333333333

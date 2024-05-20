@@ -1,87 +1,15 @@
-import csv
-import numpy as np
+import pandas as pd
 
+# Read the CSV data
+data = pd.read_csv("probability_update\simple_calculator_probability_update.csv")
 
-# Function to calculate probability distributions of variables within each block
-def calculate_probability_distributions(INPUT_FILE):
-    block_variable_probabilities = {}
-    with open(INPUT_FILE, newline="") as infile:
-        reader = csv.DictReader(infile)
-        for row in reader:
-            block_id = row["Block_ID"]
-            variable_type = row["Type"]
-            probability = float(row["Probability"])
-            if block_id not in block_variable_probabilities:
-                block_variable_probabilities[block_id] = {}
-            if variable_type not in block_variable_probabilities[block_id]:
-                block_variable_probabilities[block_id][variable_type] = {}
-            block_variable_probabilities[block_id][variable_type][
-                row["Assembly"]
-            ] = probability
-    return block_variable_probabilities
+# Get unique types
+types = data["Type"].unique()
 
+# Iterate over types and create separate CSV files
+for t in types:
+    # Filter data based on type
+    type_data = data[data["Type"] == t]
 
-# Function to calculate KL-Divergence between two probability distributions
-# Function to calculate KL-Divergence between two probability distributions
-def calculate_kl_divergence(p, q):
-    kl_divergence = np.sum(np.where(p != 0, p * np.log2(p / q), 0))
-    return kl_divergence if not np.isinf(kl_divergence) else 0
-
-
-# Function to calculate similarity between blocks using KL-Divergence
-def calculate_block_similarity(block_probabilities):
-    block_similarity = {}
-    block_ids = list(block_probabilities.keys())
-    for i in range(len(block_ids)):
-        for j in range(i + 1, len(block_ids)):
-            block_id1 = block_ids[i]
-            block_id2 = block_ids[j]
-            similarity = 0
-            for variable_type, probabilities1 in block_probabilities[block_id1].items():
-                probabilities2 = block_probabilities[block_id2].get(variable_type, {})
-                for assembly, probability1 in probabilities1.items():
-                    probability2 = probabilities2.get(assembly, 0)
-                    similarity += calculate_kl_divergence(
-                        np.array([probability1, probability2]),
-                        np.array([probability2, probability1]),
-                    )
-            block_similarity[(block_id1, block_id2)] = similarity
-    return block_similarity
-
-
-# Function to write block similarity to a CSV file
-def write_similarity_to_csv(similarity, OUTPUT_FILE):
-    with open(OUTPUT_FILE, "w", newline="") as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow(["Block_ID_1", "Block_ID_2", "Similarity"])
-        for (block_id1, block_id2), similarity_score in similarity.items():
-            writer.writerow([block_id1, block_id2, similarity_score])
-
-
-# Main function
-def main():
-    INPUT_FILE = "entropy\hello_world_entropy.csv"
-    INPUT_FILE_FILTERED = "entropy_preprocessed\hello_world_filtered_entropy.csv"
-    OUTPUT_FILE = "similarity\hello_world_block_similarity.csv"
-    OUTPUT_FILE_FILTERED = "similarity\hello_world_filtered_block_similarity.csv"
-
-    # Calculate probability distributions of variables within each block
-    block_probabilities = calculate_probability_distributions(INPUT_FILE)
-    block_probabilities_filtered = calculate_probability_distributions(
-        INPUT_FILE_FILTERED
-    )
-
-    # Calculate similarity between blocks using KL-Divergence
-    block_similarity = calculate_block_similarity(block_probabilities)
-    block_similarity_filtered = calculate_block_similarity(block_probabilities_filtered)
-
-    # Write block similarity to CSV file
-    write_similarity_to_csv(block_similarity, OUTPUT_FILE)
-    print("Block Similarity written to:", OUTPUT_FILE)
-
-    write_similarity_to_csv(block_similarity_filtered, OUTPUT_FILE_FILTERED)
-    print("Block Similarity written to:", OUTPUT_FILE_FILTERED)
-
-
-if __name__ == "__main__":
-    main()
+    # Save filtered data to a new CSV file
+    type_data.to_csv(f"{t}.csv", index=False)

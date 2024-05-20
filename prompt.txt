@@ -1,71 +1,7 @@
-Combining with this threshold.py, I want you to draw a threshold line decided by this threshold program for each type in each block. Do not eliminate the variables below the threshold, just draw the threshold line:
-```
-import csv
-import numpy as np
-
-
-# Function to calculate entropy statistics for each variable type within each block
-def calculate_variable_type_entropy_statistics(input_file):
-    block_variable_statistics = {}
-    with open(input_file, newline="") as infile:
-        reader = csv.DictReader(infile)
-        for row in reader:
-            block_id = row["Block_ID"]
-            variable_type = row["Type"]
-            entropy = float(row["Entropy"])
-            if block_id not in block_variable_statistics:
-                block_variable_statistics[block_id] = {}
-            if variable_type not in block_variable_statistics[block_id]:
-                block_variable_statistics[block_id][variable_type] = []
-            block_variable_statistics[block_id][variable_type].append(entropy)
-
-    block_variable_thresholds = {}
-    for block_id, variable_statistics in block_variable_statistics.items():
-        block_variable_thresholds[block_id] = {}
-        for variable_type, entropies in variable_statistics.items():
-            mean_entropy = np.mean(entropies)
-            std_dev_entropy = np.std(entropies)
-            threshold = mean_entropy + std_dev_entropy
-            block_variable_thresholds[block_id][variable_type] = threshold
-    return block_variable_thresholds
-
-
-# Function to filter out low entropy variables for each variable type within each block
-def filter_variables_by_variable_type(input_file, output_file, thresholds):
-    with open(input_file, newline="") as infile, open(
-        output_file, "w", newline=""
-    ) as outfile:
-        reader = csv.DictReader(infile)
-        fieldnames = reader.fieldnames
-        writer = csv.DictWriter(outfile, fieldnames=fieldnames)
-        writer.writeheader()
-
-        for row in reader:
-            block_id = row["Block_ID"]
-            variable_type = row["Type"]
-            entropy = float(row["Entropy"])
-            threshold = thresholds[block_id].get(
-                variable_type, 0
-            )  # Default to 0 if threshold is not found
-            if entropy >= threshold:
-                writer.writerow(row)
-
-
-# Main function
-def main():
-    input_file = "entropy\csv_parser_entropy.csv"
-    output_file = "entropy_preprocessed\csv_parser_filtered_entropy.csv"
-
-    # Calculate block-wise variable type entropy statistics
-    block_variable_thresholds = calculate_variable_type_entropy_statistics(input_file)
-    print("Block-wise Variable Type Thresholds:", block_variable_thresholds)
-
-    # Filter variables for each variable type within each block based on calculated thresholds
-    filter_variables_by_variable_type(
-        input_file, output_file, block_variable_thresholds
-    )
-
-
-if __name__ == "__main__":
-    main()
-```
+Okay, onto a different task. I need to calculate the similarity between blocks or 'Block_ID' based on the distribution of 'Type' (Instruction (€), Left Operand (δ), and Right Operand (γ)) within the block. KL-Divergence is a good metric for measuring the degree of similarity between such distributions. When the KL-Divergence is low between many €, δ, γ distributions within two compared blocks, the blocks are considered functionally similar and fall under a specific functional classification. I want you to also create a similarity matrix and visualize it using a heatmap using pyplot express library that output it on browser. Remember that the header of the CSV file is:
+Block_ID,Type,Assembly,Probability,Entropy
+The Assembly column has been filtered using the threshold program we made before. Now there are less data after we remove the low entropy data. Keep in mind that some blocks may not have anything in common at all. This should not return an error but perhaps the max value for KL-Divergence that is considered dissimilar. 
+KL-Divergence equation:
+KL(P || Q) = – sum x in X P(x) * log(Q(x) / P(x))
+KL divergence can be calculated as the negative sum of probability of each event in P multiplied by the log of the probability of the event in Q over the probability of the event in P.
+Calculate the 

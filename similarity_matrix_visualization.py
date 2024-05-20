@@ -28,7 +28,7 @@ def read_similarity_matrix(input_file):
 
 
 # Read the similarity matrix and block IDs
-input_file = "similarity\simple_calculator_block_similarity\simple_calculator_filtered_block_similarity_normalized.csv"
+input_file = "probability_update\simple_calculator_probability_update.csv"
 similarity_matrix, block_ids = read_similarity_matrix(input_file)
 
 # Plot the heatmap
