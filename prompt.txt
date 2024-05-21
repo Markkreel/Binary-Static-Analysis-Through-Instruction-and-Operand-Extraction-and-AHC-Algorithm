@@ -5,3 +5,5 @@ KL-Divergence equation:
 KL(P || Q) = – sum x in X P(x) * log(Q(x) / P(x))
 KL divergence can be calculated as the negative sum of probability of each event in P multiplied by the log of the probability of the event in Q over the probability of the event in P.
 Calculate the 
+
+

@@ -1,8 +1,6 @@
 import csv
-import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
-import seaborn as sns
+import plotly.express as px
 
 
 # Function to read cluster assignments from a CSV file
@@ -13,6 +11,7 @@ def read_cluster_assignments(cluster_file):
         next(reader)  # Skip header
         for row in reader:
             block_id, cluster = row
+            cluster = int(cluster)  # Ensure cluster is treated as integer
             if cluster not in clusters:
                 clusters[cluster] = []
             clusters[cluster].append(block_id)
@@ -44,42 +43,18 @@ def calculate_cluster_statistics(clusters, entropies):
             if block_id in entropies:
                 cluster_entropy_values.extend(entropies[block_id])
         if cluster_entropy_values:
-            cluster_entropies[cluster] = np.mean(cluster_entropy_values)
+            cluster_entropies[cluster] = sum(cluster_entropy_values) / len(
+                cluster_entropy_values
+            )
         else:
             cluster_entropies[cluster] = 0  # Default to 0 if no entropy values found
     return cluster_sizes, cluster_entropies
 
 
-# Function to plot cluster sizes
-def plot_cluster_sizes(cluster_sizes):
-    clusters = list(cluster_sizes.keys())
-    sizes = [cluster_sizes[cluster] for cluster in clusters]
-
-    plt.figure(figsize=(10, 6))
-    sns.barplot(x=clusters, y=sizes)
-    plt.xlabel("Cluster #")
-    plt.ylabel("Cluster Size")
-    plt.title("Cluster Sizes")
-    plt.show()
-
-
-# Function to plot cluster entropies
-def plot_cluster_entropies(cluster_entropies):
-    clusters = list(cluster_entropies.keys())
-    entropies = [cluster_entropies[cluster] for cluster in clusters]
-
-    plt.figure(figsize=(10, 6))
-    sns.barplot(x=clusters, y=entropies)
-    plt.xlabel("Cluster #")
-    plt.ylabel("Shannon Entropy Level")
-    plt.title("Cluster Entropies")
-    plt.show()
-
-
 # Main function
 def main():
-    cluster_file = "csv_parser_clusters.csv"
-    entropy_file = "entropy_preprocessed\csv_parser_filtered_entropy.csv"
+    cluster_file = "clusters/csv_parser_clusters.csv"
+    entropy_file = "entropy_preprocessed/csv_parser_filtered_entropy.csv"
 
     # Read cluster assignments and entropy data
     clusters = read_cluster_assignments(cluster_file)
@@ -88,9 +63,51 @@ def main():
     # Calculate cluster sizes and average entropies
     cluster_sizes, cluster_entropies = calculate_cluster_statistics(clusters, entropies)
 
-    # Plot the visualizations
-    plot_cluster_sizes(cluster_sizes)
-    plot_cluster_entropies(cluster_entropies)
+    # Convert to DataFrames and sort by cluster
+    cluster_sizes_df = pd.DataFrame(
+        {"Cluster": list(cluster_sizes.keys()), "Size": list(cluster_sizes.values())}
+    )
+    cluster_sizes_df = cluster_sizes_df.sort_values(by="Cluster")
+
+    cluster_entropies_df = pd.DataFrame(
+        {
+            "Cluster": list(cluster_entropies.keys()),
+            "Entropy": list(cluster_entropies.values()),
+        }
+    )
+    cluster_entropies_df = cluster_entropies_df.sort_values(by="Cluster")
+
+    # Plot the visualizations using Plotly
+    fig_cluster_sizes = px.bar(
+        cluster_sizes_df, x="Cluster", y="Size", title="Cluster Sizes"
+    )
+    fig_cluster_sizes.update_layout(
+        xaxis_tickangle=-45,
+        xaxis={"type": "category"},
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+        font=dict(
+            family="SF Pro Display, sans-serif",  # Specify the desired font family
+            size=12,  # Specify the font size
+            color="black",  # Specify the font color
+        ),
+    )
+
+    fig_cluster_entropies = px.bar(
+        cluster_entropies_df, x="Cluster", y="Entropy", title="Cluster Entropies"
+    )
+    fig_cluster_entropies.update_layout(
+        xaxis_tickangle=-45,
+        xaxis={"type": "category"},
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+        font=dict(
+            family="SF Pro Display, sans-serif",  # Specify the desired font family
+            size=12,  # Specify the font size
+            color="black",  # Specify the font color
+        ),
+    )
+
+    fig_cluster_sizes.show()
+    fig_cluster_entropies.show()
 
 
 if __name__ == "__main__":
