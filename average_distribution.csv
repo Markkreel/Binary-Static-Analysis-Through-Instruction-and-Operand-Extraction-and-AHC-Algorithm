@@ -1,0 +1,44 @@
+Type,Assembly,Probability
+Instruction,call,0.2416926272066459
+Instruction,endbr64,0.3333333333333333
+Instruction,je,0.29166666666666663
+Instruction,jmp,0.3333333333333333
+Instruction,lea,0.4332165109034268
+Instruction,mov,0.27458834000890076
+Instruction,movsd,0.12149532710280371
+Instruction,nopl,0.2708333333333333
+Instruction,pop,0.16666666666666666
+Instruction,push,0.22619047619047616
+Instruction,ret,0.20833333333333331
+Instruction,sar,0.25
+Instruction,xor,0.42857142857142866
+Left Operand,$0x0,0.5
+Left Operand,%rax,0.32638888888888895
+Left Operand,%rbp,0.8333333333333334
+Left Operand,%rsi,0.3333333333333333
+Left Operand,%rsp,1.0
+Left Operand,-0x10(%rbp),0.12500000000000006
+Left Operand,-0x18(%rbp),0.1388888888888888
+Left Operand,0x0(%rax),0.5
+Left Operand,1050 <_ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc@plt>,0.16666666666666669
+Left Operand,1060 <_ZNSolsEPFRSoS_E@plt>,0.08333333333333325
+Left Operand,1090 <_ZNSolsEd@plt>,0.16666666666666669
+Left Operand,1148 <deregister_tm_clones+0x28>,0.5
+Left Operand,1150 <register_tm_clones>,0.5
+Left Operand,1188 <register_tm_clones+0x38>,0.3333333333333333
+Right Operand, ,0.5
+Right Operand,%ebp,0.125
+Right Operand,%ecx,0.125
+Right Operand,%r8d,0.125
+Right Operand,%r9,0.125
+Right Operand,%rax,1.0
+Right Operand,%rbp,0.35
+Right Operand,%rdi,0.4460040983606558
+Right Operand,%rdx,0.125
+Right Operand,%rsi,0.29508196721311475
+Right Operand,%rsp,0.125
+Right Operand,%xmm0,0.24590163934426215
+Right Operand,"0x0(%rax,%rax,1)",0.125
+Right Operand,0x2e12(%rip) ,0.2
+Right Operand,0x2e9d(%rip) ,0.2
+Right Operand,0x2ec5(%rip),0.2
