@@ -1,15 +1,23 @@
+"""
+Imports
+"""
+
+import csv
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
+
+# import seaborn as sns
 from scipy.cluster.hierarchy import linkage, dendrogram
-import csv
 
 
 # Function to read similarity matrix from CSV file
 def read_similarity_matrix(input_file, block_ids):
+    """
+    Calculate similarity matrix
+    """
     size = len(block_ids)
     similarity_matrix = np.zeros((size, size))
-    with open(input_file, newline="") as csvfile:
+    with open(input_file, newline="", encoding="utf-8") as csvfile:
         reader = csv.reader(csvfile)
         next(reader)  # Skip header
         for row in reader:
@@ -23,28 +31,31 @@ def read_similarity_matrix(input_file, block_ids):
 
 # Convert similarity matrix to distance matrix
 def similarity_to_distance(similarity_matrix):
+    """
+    Converting similarity matrix to distance values
+    """
     max_similarity = np.max(similarity_matrix)
     distance_matrix = max_similarity - similarity_matrix
     return distance_matrix
 
 
 # Define the list of block IDs (replace with your actual block IDs)
-block_ids = [str(i) for i in range(1, 9)]  # Example with 100 blocks
+BLOCK_ID = [str(i) for i in range(1, 9)]  # Example with 100 blocks
 
 
 # Read the similarity matrix
-input_file = "similarity\simple_calculator_block_similarity\simple_calculator_block_similarity_normalized.csv"
-similarity_matrix = read_similarity_matrix(input_file, block_ids)
+INPUT_FILE = r"similarity\simple_calculator_block_similarity\simple_calculator_block_similarity_normalized.csv"
+SIMILARITY_MATRIX = read_similarity_matrix(INPUT_FILE, BLOCK_ID)
 
 # Convert to distance matrix
-distance_matrix = similarity_to_distance(similarity_matrix)
+DISTANCE_MATRIX = similarity_to_distance(SIMILARITY_MATRIX)
 
 # Perform Agglomerative Hierarchical Clustering
-Z = linkage(distance_matrix, method="ward")
+Z = linkage(DISTANCE_MATRIX, method="ward")
 
 # Plot dendrogram
 plt.figure(figsize=(15, 10))  # Increase figure size for better readability
-dendrogram(Z, labels=block_ids, leaf_rotation=90, leaf_font_size=8)
+dendrogram(Z, labels=BLOCK_ID, leaf_rotation=90, leaf_font_size=8)
 plt.title("Dendrogram of Block Clusters")
 plt.xlabel("Block ID")
 plt.ylabel("Distance")
