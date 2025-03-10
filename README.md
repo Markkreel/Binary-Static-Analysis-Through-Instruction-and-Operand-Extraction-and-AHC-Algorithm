@@ -15,7 +15,9 @@ This script allows you to visualize the entropy of instructions, operands (left 
 
 The script calculates a Z-score for each data point (entropy value) to determine its relative deviation from the mean entropy within the chosen block. The Z-score equation is:
 
-`Z = (x - mean) / standard deviation`
+```mathematica
+Z = (x - mean) / standard deviation
+```
 
 This helps identify data points that significantly differ from the average entropy within the block, potentially indicating unusual patterns or outliers.
 
@@ -30,7 +32,7 @@ This visualization can aid in understanding the entropy distribution within a bl
 
 Modify `entropy_visualization.py`:
 
-```
+```python
 def main():
     input_file = "entropy\csv_parser_entropy.csv"
     block_id = input("Enter the Block ID to visualize: ")
@@ -62,7 +64,7 @@ This section details the process of characterizing blocks based on their functio
 - Ensure the input data to these scripts is suitable for KL divergence calculations. Consider data normalization or smoothing if necessary (especially for distributions with low counts).
 - The choice between `kl_divergence.py` and `kl_divergence_normalized.py` depends on your data characteristics.
 - Modify the following code to the desired entropy CSV file and modify the number of existing blocks in the CSV file:
-  ```
+  ```python
   def main():
       INPUT_FILE = "similarity\csv_parser_block_similarity\csv_parser_block_similarity_normalized.csv"
       OUTPUT_FILE = "clusters.csv"
@@ -85,4 +87,4 @@ This section explains how to visualize the similarity between blocks using `simi
 
 Heatmaps provide a convenient way to quickly identify blocks with high similarity scores, potentially suggesting similar functionalities. Futhermore, visualizing the entire matrix allows for a more comprehensive understanding of the relationships between all blocks.
 
-Last Updated: 11-03-2025 ⸺ Last Reviewed: 11-03-2025
+**Last Updated:** 11-03-2025 ⸺ **Last Reviewed:** 11-03-2025
