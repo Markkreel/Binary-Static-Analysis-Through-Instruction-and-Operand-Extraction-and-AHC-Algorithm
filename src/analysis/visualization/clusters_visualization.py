@@ -1,3 +1,9 @@
+"""
+This module provides functionality for visualizing cluster data and entropy information.
+It reads cluster assignments and entropy data from CSV files, calculates statistics,
+and generates interactive visualizations using Plotly.
+"""
+
 import csv
 import pandas as pd
 import plotly.express as px
@@ -5,8 +11,19 @@ import plotly.express as px
 
 # Function to read cluster assignments from a CSV file
 def read_cluster_assignments(cluster_file):
+    """
+    Read cluster assignments from a CSV file and organize them by cluster ID.
+
+    Args:
+        cluster_file (str): Path to the CSV file containing cluster assignments.
+            The file should have two columns: block ID and cluster number.
+
+    Returns:
+        dict: A dictionary mapping cluster IDs (integers) to lists of block IDs.
+            Each cluster ID maps to all block IDs assigned to that cluster.
+    """
     clusters = {}
-    with open(cluster_file, newline="") as csvfile:
+    with open(cluster_file, newline="", encoding="UTF-8") as csvfile:
         reader = csv.reader(csvfile)
         next(reader)  # Skip header
         for row in reader:
@@ -20,8 +37,19 @@ def read_cluster_assignments(cluster_file):
 
 # Function to read entropy data from a CSV file
 def read_entropy_data(entropy_file):
+    """
+    Read entropy data from a CSV file and organize it by block ID.
+
+    Args:
+        entropy_file (str): Path to the CSV file containing entropy data.
+            The file should have 'Block_ID' and 'Entropy' columns.
+
+    Returns:
+        dict: A dictionary mapping block IDs to lists of entropy values.
+            Each block ID can have multiple associated entropy values.
+    """
     entropies = {}
-    with open(entropy_file, newline="") as csvfile:
+    with open(entropy_file, newline="", encoding="UTF-8") as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             block_id = row["Block_ID"]
@@ -34,6 +62,19 @@ def read_entropy_data(entropy_file):
 
 # Function to calculate cluster sizes and average entropies
 def calculate_cluster_statistics(clusters, entropies):
+    """
+    Calculate statistics for each cluster including size and average entropy.
+
+    Args:
+        clusters (dict): Dict mapping cluster IDs to lists of block IDs
+        entropies (dict): Dictionary mapping block IDs to lists of entropy values
+
+    Returns:
+        tuple: A pair of dictionaries containing:
+            - cluster_sizes (dict): Maps cluster IDs to number of blocks in each cluster
+            - cluster_entropies (dict): Maps cluster IDs to average entropy of blocks in
+                each cluster
+    """
     cluster_sizes = {}
     cluster_entropies = {}
     for cluster, block_ids in clusters.items():
@@ -53,6 +94,16 @@ def calculate_cluster_statistics(clusters, entropies):
 
 # Main function
 def main():
+    """
+    Main function that reads cluster assignments and entropy data from CSV files,
+    calculates cluster statistics, and generates visualizations using Plotly.
+
+    The function performs the following steps:
+    1. Reads cluster assignments from a CSV file
+    2. Reads entropy data from a CSV file
+    3. Calculates cluster sizes and average entropies
+    4. Creates and displays bar charts for cluster sizes and entropies
+    """
     cluster_file = "clusters/csv_parser_clusters.csv"
     entropy_file = "entropy_preprocessed/csv_parser_filtered_entropy.csv"
 
