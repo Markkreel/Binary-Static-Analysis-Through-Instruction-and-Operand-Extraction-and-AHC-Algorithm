@@ -6,7 +6,7 @@ from scipy.cluster.hierarchy import linkage, dendrogram, fcluster
 
 def calculate_probability_distributions(INPUT_FILE):
     block_variable_probabilities = {}
-    with open(INPUT_FILE, newline="") as infile:
+    with open(INPUT_FILE, newline="", encoding="UTF-8") as infile:
         reader = csv.DictReader(infile)
         for row in reader:
             block_id = row["Block_ID"]
@@ -30,12 +30,23 @@ def calculate_kl_divergence(p, q):
 
 
 def calculate_block_similarity(block_probabilities):
+    """
+    Calculate similarity between blocks based on their probability distributions.
+
+    Args:
+        block_probabilities (dict): A dictionary containing probability distributions
+            for each block. The structure is:
+            {block_id: {variable_type: {assembly: probability}}}
+
+    Returns:
+        dict: A dictionary containing pairwise similarities between blocks.
+            The keys are tuples of block IDs (block_id1, block_id2) and
+            the values are their similarity scores based on KL divergence.
+    """
     block_similarity = {}
     block_ids = list(block_probabilities.keys())
-    for i in range(len(block_ids)):
-        for j in range(i + 1, len(block_ids)):
-            block_id1 = block_ids[i]
-            block_id2 = block_ids[j]
+    for i, block_id1 in enumerate(block_ids):
+        for block_id2 in block_ids[i + 1 :]:
             similarity = 0
             for variable_type, probabilities1 in block_probabilities[block_id1].items():
                 probabilities2 = block_probabilities[block_id2].get(variable_type, {})
@@ -48,7 +59,7 @@ def calculate_block_similarity(block_probabilities):
 
 
 def write_similarity_to_csv(similarity, output_file):
-    with open(output_file, "w", newline="") as csvfile:
+    with open(output_file, "w", newline="", encoding="UTF-8") as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(["Block_ID_1", "Block_ID_2", "Similarity"])
         for (block_id1, block_id2), similarity_score in similarity.items():
@@ -69,8 +80,8 @@ def create_similarity_matrix(similarity_dict, block_ids):
 INPUT_FILE = "entropy_preprocessed\hello_world_filtered_entropy.csv"
 OUTPUT_FILE = "similarity_matrix.csv"
 block_probabilities = calculate_probability_distributions(INPUT_FILE)
-block_similarity = calculate_block_similarity(block_probabilities)
-write_similarity_to_csv(block_similarity, OUTPUT_FILE)
+BLOCK_SIMILARITY = calculate_block_similarity(block_probabilities)
+write_similarity_to_csv(BLOCK_SIMILARITY, OUTPUT_FILE)
 
 block_ids = list(block_probabilities.keys())
-similarity_matrix = create_similarity_matrix(block_similarity, block_ids)
+similarity_matrix = create_similarity_matrix(BLOCK_SIMILARITY, block_ids)

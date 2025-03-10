@@ -1,7 +1,12 @@
+"""
+This module provides functionality for visualizing similarity matrices between binary code blocks.
+It reads similarity data from CSV files and generates heatmap visualizations using matplotlib and seaborn.
+"""
+
+import csv
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-import csv
 
 
 # Function to read similarity matrix from CSV file and generate block IDs
