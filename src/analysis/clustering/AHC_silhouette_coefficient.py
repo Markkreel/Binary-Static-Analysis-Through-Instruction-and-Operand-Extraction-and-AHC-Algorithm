@@ -1,3 +1,9 @@
+"""
+This module implements Agglomerative Hierarchical Clustering (AHC) with silhouette coefficient analysis.
+It processes binary analysis data, performs clustering using Jensen-Shannon Divergence as a distance metric,
+and evaluates cluster quality using silhouette coefficients.
+"""
+
 import pandas as pd
 import numpy as np
 from scipy.spatial.distance import pdist, squareform
@@ -12,6 +18,17 @@ data = pd.read_csv("entropy_preprocessed\csv_parser_filtered_entropy.csv")
 
 # Normalize probabilities within each block
 def normalize_probabilities(df):
+    """
+    Normalize probabilities within each block and assembly type combination.
+
+    Args:
+        df (pandas.DataFrame): Input DataFrame containing Block_ID, Type, and
+            Probability columns.
+
+    Returns:
+        pandas.DataFrame: A new DataFrame with normalized probability values where
+            the sum of probabilities for each block-type combination equals 1.
+    """
     normalized_df = df.copy()
     for block_id in normalized_df["Block_ID"].unique():
         for assembly_type in normalized_df["Type"].unique():
@@ -31,6 +48,17 @@ normalized_data = normalized_data.drop(columns=["Entropy"])
 
 # Prepare data for clustering
 def prepare_data_for_clustering(df):
+    """
+    Prepare data for clustering by creating a pivot table from the input DataFrame.
+
+    Args:
+        df (pandas.DataFrame): Input DataFrame containing Block_ID, Type, Assembly,
+            and Probability columns.
+
+    Returns:
+        pandas.DataFrame: A pivot table with Block_ID as index, Type-Assembly combinations
+            as columns, and Probability values as entries. Missing values are filled with 0.
+    """
     pivot_df = df.pivot_table(
         index="Block_ID",
         columns=["Type", "Assembly"],
@@ -45,6 +73,20 @@ clustering_data = prepare_data_for_clustering(normalized_data)
 
 # Function to calculate Jensen-Shannon Divergence
 def jensen_shannon_divergence(p, q):
+    """
+    Calculate the Jensen-Shannon Divergence between two probability distributions.
+
+    Args:
+        p (array-like): First probability distribution
+        q (array-like): Second probability distribution
+
+    Returns:
+        float: Jensen-Shannon Divergence value between p and q
+
+    Note:
+        The Jensen-Shannon Divergence is a symmetrized and smoothed version of the
+        Kullback-Leibler divergence. It is always finite and bounded between 0 and 1.
+    """
     p = np.asarray(p)
     q = np.asarray(q)
     m = 0.5 * (p + q)
@@ -55,6 +97,17 @@ def jensen_shannon_divergence(p, q):
 
 # Calculate distance matrix using JSD
 def calculate_jsd_matrix(data):
+    """
+    Calculate the Jensen-Shannon Divergence distance matrix for the given data.
+
+    Args:
+        data (pandas.DataFrame): Input data matrix where rows represent blocks and
+            columns represent features.
+
+    Returns:
+        numpy.ndarray: A square distance matrix containing pairwise JSD distances
+            between all blocks.
+    """
     dist_matrix = squareform(pdist(data, metric=jensen_shannon_divergence))
     return dist_matrix
 
@@ -73,8 +126,8 @@ plt.ylabel("Distance (JSD)")
 plt.show()
 
 # Cut the dendrogram into clusters
-distance_threshold = 0.5  # Set your desired distance threshold here
-clusters = fcluster(linkage_matrix, t=distance_threshold, criterion="distance")
+DISTANCE_THRESHOLD = 0.5  # Set your desired distance threshold here
+clusters = fcluster(linkage_matrix, t=DISTANCE_THRESHOLD, criterion="distance")
 
 # Calculate Silhouette Coefficients for each block
 silhouette_values = silhouette_samples(distance_matrix, clusters, metric="precomputed")
