@@ -44,7 +44,10 @@ BLOCK_ID = [str(i) for i in range(1, 9)]  # Example with 100 blocks
 
 
 # Read the similarity matrix
-INPUT_FILE = r"similarity\simple_calculator_block_similarity\simple_calculator_block_similarity_normalized.csv"
+INPUT_FILE = (
+    r"similarity\simple_calculator_block_similarity"
+    r"\simple_calculator_block_similarity_normalized.csv"
+)
 SIMILARITY_MATRIX = read_similarity_matrix(INPUT_FILE, BLOCK_ID)
 
 # Convert to distance matrix
