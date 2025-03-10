@@ -17,7 +17,8 @@ def calculate_variable_type_entropy_statistics(input_file):
         input_file (str): Path to the input CSV file containing entropy data
 
     Returns:
-        dict: A nested dictionary containing entropy thresholds for each variable type within each block.
+        dict: A nested dictionary containing entropy thresholds for each variable type
+              within each block.
               The structure is {block_id: {variable_type: threshold}}
               where threshold = mean_entropy + standard_deviation_entropy
     """
@@ -53,7 +54,7 @@ def filter_variables_by_variable_type(input_file, output_file, thresholds):
     Args:
         input_file (str): Path to the input CSV file containing entropy data
         output_file (str): Path to the output CSV file where filtered data will be written
-        thresholds (dict): Dictionary containing entropy thresholds for each variable type within each block
+        thresholds (dict): Dict containing entropy thresholds for each variable type per block
 
     The function reads entropy data from the input file and writes only those entries to the
     output file where the entropy value is greater than or equal to the corresponding threshold
@@ -90,8 +91,8 @@ def main():
     The function reads from a CSV file containing entropy data and writes the filtered
     results to a new CSV file.
     """
-    input_file = "entropy\csv_parser_entropy.csv"
-    output_file = "entropy_preprocessed\csv_parser_filtered_entropy.csv"
+    input_file = "entropy/csv_parser_entropy.csv"
+    output_file = "entropy_preprocessed/csv_parser_filtered_entropy.csv"
 
     # Calculate block-wise variable type entropy statistics
     block_variable_thresholds = calculate_variable_type_entropy_statistics(input_file)

@@ -32,7 +32,8 @@ def calculate_entropy(probabilities):
 # Function to calculate probability distribution and entropy
 def calculate_probabilities_and_entropy(blocks):
     """
-    Calculate probability distributions and entropy values for instructions and operands in assembly code blocks.
+    Calculate probability distributions and entropy values for instructions and
+    operands in assembly code blocks.
 
     Args:
         blocks (dict): A dictionary where keys are block IDs and values are lists of dictionaries
@@ -47,7 +48,7 @@ def calculate_probabilities_and_entropy(blocks):
         - Entropy: Entropy value calculated for the probability
     """
     with open(
-        "entropy\dynamic_array_calculator_entropy.csv",
+        r"entropy\dynamic_array_calculator_entropy.csv",
         "w",
         newline="",
         encoding="UTF-8",
@@ -120,7 +121,10 @@ def main():
     probability distributions and entropy values for instructions and operands within
     each block. Results are written to a CSV file.
     """
-    assembly_file_path = "compiled\dynamic_array_allocator_disassembled\dynamic_array_allocator_diassembly.csv"
+    assembly_file_path = (
+        "compiled\\dynamic_array_allocator_disassembled\\"
+        "dynamic_array_allocator_diassembly.csv"
+    )
     blocks = read_assembly_csv(assembly_file_path)
     calculate_probabilities_and_entropy(blocks)
 
