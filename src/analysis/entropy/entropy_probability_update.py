@@ -1,3 +1,9 @@
+"""
+This module calculates probability distributions of assembly instructions within code blocks.
+It processes entropy-filtered data to determine the frequency and probability of each assembly
+instruction type, providing insights into instruction patterns across different code blocks.
+"""
+
 import pandas as pd
 
 # Load the filtered CSV file containing high entropy data
@@ -6,6 +12,15 @@ df = pd.read_csv(r"entropy_preprocessed\simple_calculator_filtered_entropy.csv")
 
 # Function to calculate probability of each Assembly value for each Type in each Block
 def calculate_assembly_probabilities(df):
+    """
+    Calculate the probability of each Assembly value for each Type within each Block.
+
+    Args:
+        df (pandas.DataFrame): Input DataFrame containing Block_ID, Type, and Assembly columns.
+
+    Returns:
+        pandas.DataFrame: DataFrame containing Block_ID, Type, Assembly, and their corresponding probabilities.
+    """
     # Group by 'Block_ID', 'Type', and 'Assembly' and count occurrences
     assembly_counts = (
         df.groupby(["Block_ID", "Type", "Assembly"]).size().reset_index(name="Count")
