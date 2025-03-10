@@ -11,6 +11,18 @@ import seaborn as sns
 
 # Function to read similarity matrix from CSV file and generate block IDs
 def read_similarity_matrix(input_file):
+    """
+    Reads a similarity matrix from a CSV file and generates corresponding block IDs.
+
+    Args:
+        input_file (str): Path to the CSV file containing similarity data.
+
+    Returns:
+        tuple: A tuple containing:
+            - numpy.ndarray: A square similarity matrix where each element represents
+              the similarity between two blocks
+            - list: Sorted list of unique block IDs
+    """
     block_ids = set()
     similarities = []
     with open(input_file, newline="", encoding="UTF-8") as csvfile:
