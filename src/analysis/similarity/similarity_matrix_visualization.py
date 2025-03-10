@@ -8,7 +8,7 @@ import csv
 def read_similarity_matrix(input_file):
     block_ids = set()
     similarities = []
-    with open(input_file, newline="") as csvfile:
+    with open(input_file, newline="", encoding="UTF-8") as csvfile:
         reader = csv.reader(csvfile)
         next(reader)  # Skip header
         for row in reader:
@@ -28,8 +28,8 @@ def read_similarity_matrix(input_file):
 
 
 # Read the similarity matrix and block IDs
-input_file = "probability_update\simple_calculator_probability_update.csv"
-similarity_matrix, block_ids = read_similarity_matrix(input_file)
+INPUT_FILE = "probability_update\simple_calculator_probability_update.csv"
+similarity_matrix, block_ids = read_similarity_matrix(INPUT_FILE)
 
 # Plot the heatmap
 plt.figure(figsize=(10, 8))
