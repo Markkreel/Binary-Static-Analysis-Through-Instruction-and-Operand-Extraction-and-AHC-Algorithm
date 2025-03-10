@@ -1,9 +1,0 @@
-Okay, onto a different task. I need to calculate the similarity between blocks or 'Block_ID' based on the distribution of 'Type' (Instruction (€), Left Operand (δ), and Right Operand (γ)) within the block. KL-Divergence is a good metric for measuring the degree of similarity between such distributions. When the KL-Divergence is low between many €, δ, γ distributions within two compared blocks, the blocks are considered functionally similar and fall under a specific functional classification. I want you to also create a similarity matrix and visualize it using a heatmap using pyplot express library that output it on browser. Remember that the header of the CSV file is:
-Block_ID,Type,Assembly,Probability,Entropy
-The Assembly column has been filtered using the threshold program we made before. Now there are less data after we remove the low entropy data. Keep in mind that some blocks may not have anything in common at all. This should not return an error but perhaps the max value for KL-Divergence that is considered dissimilar. 
-KL-Divergence equation:
-KL(P || Q) = – sum x in X P(x) * log(Q(x) / P(x))
-KL divergence can be calculated as the negative sum of probability of each event in P multiplied by the log of the probability of the event in Q over the probability of the event in P.
-Calculate the 
-
-
