@@ -1,10 +1,25 @@
+"""
+This module provides functionality for calculating and analyzing similarity between binary code blocks
+based on their probability distributions. It includes methods for computing Kullback-Leibler divergence,
+creating similarity matrices, and handling CSV input/output operations.
+"""
+
 import csv
 import numpy as np
-from scipy.spatial.distance import pdist, squareform
-from scipy.cluster.hierarchy import linkage, dendrogram, fcluster
 
 
 def calculate_probability_distributions(INPUT_FILE):
+    """
+    Calculate probability distributions for each block from a CSV file.
+
+    Args:
+        INPUT_FILE (str): Path to the input CSV file containing block data with columns:
+            Block_ID, Type, Assembly, and Probability.
+
+    Returns:
+        dict: A nested dictionary structure containing probability distributions for each block.
+            Format: {block_id: {variable_type: {assembly: probability}}}
+    """
     block_variable_probabilities = {}
     with open(INPUT_FILE, newline="", encoding="UTF-8") as infile:
         reader = csv.DictReader(infile)
@@ -23,6 +38,19 @@ def calculate_probability_distributions(INPUT_FILE):
 
 
 def calculate_kl_divergence(p, q):
+    """
+    Calculate the Kullback-Leibler divergence between two probability distributions.
+
+    Args:
+        p (array-like): First probability distribution
+        q (array-like): Second probability distribution
+
+    Returns:
+        float: KL divergence value between distributions p and q
+
+    Note:
+        A small epsilon value is added to avoid log(0) calculations
+    """
     epsilon = 1e-10  # small constant to avoid log(0)
     p = np.array(p) + epsilon
     q = np.array(q) + epsilon
@@ -59,6 +87,18 @@ def calculate_block_similarity(block_probabilities):
 
 
 def write_similarity_to_csv(similarity, output_file):
+    """
+    Write block similarity scores to a CSV file.
+
+    Args:
+        similarity (dict): A dictionary containing pairwise similarities between blocks.
+            The keys are tuples of block IDs (block_id1, block_id2) and
+            the values are their similarity scores.
+        output_file (str): Path to the output CSV file where similarity scores will be written.
+
+    Returns:
+        None
+    """
     with open(output_file, "w", newline="", encoding="UTF-8") as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(["Block_ID_1", "Block_ID_2", "Similarity"])
@@ -67,6 +107,18 @@ def write_similarity_to_csv(similarity, output_file):
 
 
 def create_similarity_matrix(similarity_dict, block_ids):
+    """
+    Create a symmetric similarity matrix from a dictionary of pairwise similarities.
+
+    Args:
+        similarity_dict (dict): Dictionary containing pairwise similarities between blocks.
+            Keys are tuples of block IDs (block_id1, block_id2) and values are similarity scores.
+        block_ids (list): List of all block IDs used to determine matrix dimensions and indexing.
+
+    Returns:
+        numpy.ndarray: A symmetric square matrix where element [i,j] represents
+            the similarity between blocks at indices i and j.
+    """
     size = len(block_ids)
     similarity_matrix = np.zeros((size, size))
     for (block_id1, block_id2), similarity in similarity_dict.items():
