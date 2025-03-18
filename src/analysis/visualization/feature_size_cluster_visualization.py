@@ -10,6 +10,16 @@ def load_data():
 
 
 def filter_data(entropy_data, data_type):
+    """
+    Filters the entropy data based on the specified data type.
+
+    Args:
+        entropy_data (pandas.DataFrame): DataFrame containing entropy data
+        data_type (str): Type of data to filter for (e.g., 'Instruction', 'Operand')
+
+    Returns:
+        pandas.DataFrame: Filtered DataFrame containing only rows matching the specified data type
+    """
     # Filter the data based on the user-specified "Type"
     filtered_data = entropy_data[entropy_data["Type"] == data_type]
     return filtered_data
