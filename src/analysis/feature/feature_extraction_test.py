@@ -1,8 +1,28 @@
+"""
+This module provides functionality for parsing and extracting features from assembly code blocks.
+It processes disassembled instruction blocks and converts them into a structured CSV format
+for further analysis.
+"""
+
 import re
 import csv
 
 
 def parse_block(data):
+    """
+    Parse a block of assembly instructions and extract relevant information.
+
+    Args:
+        data (str): A string containing a block of assembly instructions with block ID
+                   and tab-separated instruction details.
+
+    Returns:
+        list: A list of tuples containing parsed instruction information.
+              Each tuple contains (block_id, address, instruction, left_operand, right_operand).
+
+    The function processes a block of text that starts with a block ID in angle brackets,
+    followed by lines of tab-separated assembly instruction details.
+    """
     lines = data.strip().split("\n")
     block_id_match = re.search(r"<([^>]*)>", lines[0])
     if block_id_match:
@@ -26,8 +46,26 @@ def parse_block(data):
 
 
 def main():
-    input_file = ("C:\\External\\Projects\\8th Semester\\Thesis\\"
-                  "feature_extraction\\disassembled_test.txt")
+    """
+    Main function that processes a disassembled text file containing instruction blocks
+    and converts it into a structured CSV format.
+
+    The function reads instruction blocks from the input file, parses each block to extract
+    instruction details (block ID, address, instruction, operands), and writes the formatted
+    data to a CSV file.
+
+    Input file format:
+    - Text file containing instruction blocks separated by blank lines
+    - Each block starts with an ID in angle brackets
+    - Each instruction line contains tab-separated address, instruction, and operands
+
+    Output file format:
+    - CSV file with columns: Block ID, Address, Instruction, Left Operand, Right Operand
+    """
+    input_file = (
+        "C:\\External\\Projects\\8th Semester\\Thesis\\"
+        "feature_extraction\\disassembled_test.txt"
+    )
     output_file = "formatted_data.csv"
 
     with open(input_file, "r", encoding="UTF-8") as f:
