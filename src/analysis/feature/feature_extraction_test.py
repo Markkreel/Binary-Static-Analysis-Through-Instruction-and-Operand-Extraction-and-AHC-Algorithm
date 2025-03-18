@@ -26,7 +26,8 @@ def parse_block(data):
 
 
 def main():
-    input_file = "C:\\External\\Projects\\8th Semester\\Thesis\\feature_extraction\\disassembled_test.txt"
+    input_file = ("C:\\External\\Projects\\8th Semester\\Thesis\\"
+                  "feature_extraction\\disassembled_test.txt")
     output_file = "formatted_data.csv"
 
     with open(input_file, "r", encoding="UTF-8") as f:
