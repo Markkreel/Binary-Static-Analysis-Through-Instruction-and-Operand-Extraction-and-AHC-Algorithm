@@ -22,6 +22,16 @@ def merge_data(filtered_data, cluster_data):
 
 
 def aggregate_data(merged_data):
+    """
+    Aggregates the merged data by grouping it by Cluster and Assembly, calculating the mean Entropy.
+
+    Args:
+        merged_data (pandas.DataFrame): DataFrame containing merged entropy and cluster data
+            with columns 'Cluster', 'Assembly', and 'Entropy'
+
+    Returns:
+        pandas.DataFrame: Aggregated DataFrame with columns 'Cluster', 'Assembly', and mean 'Entropy'
+    """
     # Group by "Cluster" and "Assembly", and calculate the average "Entropy"
     aggregated_data = (
         merged_data.groupby(["Cluster", "Assembly"])["Entropy"].mean().reset_index()
