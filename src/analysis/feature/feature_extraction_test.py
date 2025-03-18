@@ -29,13 +29,13 @@ def main():
     input_file = "C:\\External\\Projects\\8th Semester\\Thesis\\feature_extraction\\disassembled_test.txt"
     output_file = "formatted_data.csv"
 
-    with open(input_file, "r") as f:
+    with open(input_file, "r", encoding="UTF-8") as f:
         data = f.read()
 
     blocks = re.split(r"\n\s*\n", data)
     parsed_instructions = [parse_block(block) for block in blocks]
 
-    with open(output_file, "w", newline="") as csvfile:
+    with open(output_file, "w", newline="", encoding="UTF-8") as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(
             ["Block ID", "Address", "Instruction", "Left Operand", "Right Operand"]
