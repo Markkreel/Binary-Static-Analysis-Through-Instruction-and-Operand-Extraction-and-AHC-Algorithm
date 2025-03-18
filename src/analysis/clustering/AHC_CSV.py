@@ -52,10 +52,11 @@ def prepare_data_for_clustering(df):
     Prepare the data for clustering by creating a pivot table from the input DataFrame.
 
     Args:
-        df (pandas.DataFrame): Input DataFrame containing Block_ID, Type, Assembly, and Probability columns
+        df (pandas.DataFrame): Input DataFrame containing Block_ID, Type, Assembly,
+            and Probability columns
 
     Returns:
-        pandas.DataFrame: A pivot table with Block_ID as index, compound columns of Type and Assembly,
+        pandas.DataFrame: A pivot table with Block_ID as index, compound columns of Type and
                          and Probability values. Missing values are filled with 0.
     """
     pivot_df = df.pivot_table(
@@ -81,7 +82,8 @@ def jensen_shannon_divergence(p, q):
 
     Returns:
         float: The Jensen-Shannon Divergence between p and q, which is a value between 0 and 1
-              where 0 indicates identical distributions and 1 indicates maximally different distributions
+              where 0 indicates identical distributions and 1 indicates maximally
+              different distributions
     """
     p = np.asarray(p)
     q = np.asarray(q)
@@ -100,7 +102,8 @@ def calculate_jsd_matrix(input_data):
         input_data: DataFrame containing the probability distributions to compare
 
     Returns:
-        numpy.ndarray: A square matrix containing pairwise JSD distances between all input distributions
+        numpy.ndarray: A square matrix containing pairwise JSD distances between input
+            distributions
     """
     dist_matrix = squareform(pdist(input_data, metric=jensen_shannon_divergence))
     return dist_matrix
