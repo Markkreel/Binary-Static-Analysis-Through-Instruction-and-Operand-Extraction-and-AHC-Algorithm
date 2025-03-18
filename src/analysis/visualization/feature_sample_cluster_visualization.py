@@ -68,7 +68,8 @@ def aggregate_data(merged_data):
             with columns 'Cluster', 'Assembly', and 'Entropy'
 
     Returns:
-        pandas.DataFrame: Aggregated DataFrame with columns 'Cluster', 'Assembly', and mean 'Entropy'
+        pandas.DataFrame: Aggregated DataFrame with columns 'Cluster', 'Assembly', and
+            mean 'Entropy'
     """
     # Group by "Cluster" and "Assembly", and calculate the average "Entropy"
     aggregated_data = (
