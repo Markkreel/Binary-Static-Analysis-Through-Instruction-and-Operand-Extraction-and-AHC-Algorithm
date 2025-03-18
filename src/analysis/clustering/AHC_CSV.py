@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import scipy.stats as stats
 
 # Load the CSV data
-data = pd.read_csv("entropy_preprocessed\csv_parser_filtered_entropy.csv")
+data = pd.read_csv(r"entropy_preprocessed\csv_parser_filtered_entropy.csv")
 
 
 # Normalize probabilities within each block
@@ -53,8 +53,8 @@ def jensen_shannon_divergence(p, q):
 
 
 # Calculate distance matrix using JSD
-def calculate_jsd_matrix(data):
-    dist_matrix = squareform(pdist(data, metric=jensen_shannon_divergence))
+def calculate_jsd_matrix(input_data):
+    dist_matrix = squareform(pdist(input_data, metric=jensen_shannon_divergence))
     return dist_matrix
 
 
@@ -72,11 +72,11 @@ plt.ylabel("Distance (JSD)")
 plt.show()
 
 # Cut the dendrogram into clusters
-distance_threshold = 0.5  # Set your desired distance threshold here
-clusters = fcluster(linkage_matrix, t=distance_threshold, criterion="distance")
+DISTANCE_THRESHOLD = 0.5  # Set your desired distance threshold here
+clusters = fcluster(linkage_matrix, t=DISTANCE_THRESHOLD, criterion="distance")
 
 # Create DataFrame mapping Block_ID to Cluster
 cluster_mapping = pd.DataFrame({"Block_ID": clustering_data.index, "Cluster": clusters})
 
 # Write the DataFrame to a CSV file
-cluster_mapping.to_csv("clusters\csv_parser_clusters.csv", index=False)
+cluster_mapping.to_csv(r"clusters/csv_parser_clusters.csv", index=False)
