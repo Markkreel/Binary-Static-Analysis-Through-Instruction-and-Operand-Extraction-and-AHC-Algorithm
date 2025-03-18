@@ -42,6 +42,17 @@ def plot_bar_chart(aggregated_data, data_type):
 
 
 def main():
+    """
+    Main function that orchestrates the data processing and visualization pipeline.
+
+    The function performs the following steps:
+    1. Takes user input for data type
+    2. Loads entropy and cluster data from CSV files
+    3. Filters data based on specified type
+    4. Merges filtered data with cluster data
+    5. Aggregates data by counting distinct assemblies per cluster
+    6. Generates and displays a bar chart visualization
+    """
     # Step 1: User Input
     data_type = "Instruction"
     # Step 2: Data Loading
