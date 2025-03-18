@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 def load_data():
     # Load the data from the CSV files
-    entropy_data = pd.read_csv("entropy_preprocessed\csv_parser_filtered_entropy.csv")
+    entropy_data = pd.read_csv("entropy_preprocessed/csv_parser_filtered_entropy.csv")
     cluster_data = pd.read_csv("clusters.csv")
     return entropy_data, cluster_data
 
