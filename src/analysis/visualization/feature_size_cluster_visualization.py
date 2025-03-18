@@ -22,6 +22,16 @@ def merge_data(filtered_data, cluster_data):
 
 
 def aggregate_data(merged_data):
+    """
+    Aggregates the merged data by counting distinct assemblies per cluster.
+
+    Args:
+        merged_data (pandas.DataFrame): DataFrame containing merged entropy and cluster data
+
+    Returns:
+        pandas.DataFrame: Aggregated data containing cluster IDs and their corresponding
+            number of distinct assemblies
+    """
     # Group by "Cluster" and count the number of distinct "Assembly"
     aggregated_data = merged_data.groupby("Cluster")["Assembly"].nunique().reset_index()
     aggregated_data.rename(columns={"Assembly": "Distinct_Assemblies"}, inplace=True)
