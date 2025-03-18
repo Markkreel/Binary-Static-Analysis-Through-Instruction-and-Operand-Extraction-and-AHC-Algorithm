@@ -1,8 +1,20 @@
+"""
+This module provides functionality for processing and formatting CSV files containing
+binary analysis data. It handles splitting operands while preserving bracket contents
+and updates the CSV file structure accordingly.
+"""
+
 import pandas as pd
 
 # Read the CSV file
-input_file = r"C:\External\Projects\8th Semester\Thesis\feature_extraction\output\formatted_data.csv"
-output_file = r"C:\External\Projects\8th Semester\Thesis\feature_extraction\output\updated_formatted_data.csv"
+INPUT_FILE = (
+    r"C:\External\Projects\8th Semester\Thesis\feature_extraction\output"
+    r"\formatted_data.csv"
+)
+OUTPUT_FILE = (
+    r"C:\External\Projects\8th Semester\Thesis\feature_extraction\output"
+    r"\updated_formatted_data.csv"
+)
 
 
 def split_left_operand(text):
@@ -32,7 +44,7 @@ def split_left_operand(text):
 
 
 # Read the CSV data
-df = pd.read_csv(input_file)
+df = pd.read_csv(INPUT_FILE)
 
 # Apply the split function to the Left Operand column
 split_results = df["Left Operand"].apply(split_left_operand)
@@ -45,6 +57,6 @@ if any(df["Instruction"]):  # Check if Instruction column has any values
     df["Instruction"] = ""
 
 # Save the updated data to a new CSV file
-df.to_csv(output_file, index=False)
+df.to_csv(OUTPUT_FILE, index=False)
 
 print("CSV file updated successfully!")
