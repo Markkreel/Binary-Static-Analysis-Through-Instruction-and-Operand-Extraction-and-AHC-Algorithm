@@ -29,6 +29,17 @@ def aggregate_data(merged_data):
 
 
 def plot_bar_chart(aggregated_data, data_type):
+    """
+    Creates and displays a bar chart showing the number of distinct assemblies per cluster.
+
+    Args:
+        aggregated_data (pandas.DataFrame): DataFrame containing cluster IDs and their corresponding
+            number of distinct assemblies
+        data_type (str): Type of data being visualized (e.g., 'Instruction', 'Operand')
+
+    Returns:
+        None: Displays the bar chart using matplotlib
+    """
     # Create a bar chart
     plt.figure(figsize=(12, 8))
     plt.bar(aggregated_data["Cluster"], aggregated_data["Distinct_Assemblies"])
