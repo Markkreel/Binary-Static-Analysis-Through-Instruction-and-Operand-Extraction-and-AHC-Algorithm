@@ -1,3 +1,9 @@
+"""
+This module provides functionality for visualizing entropy levels across different clusters
+and assembly types using data from binary analysis. It processes entropy data and cluster
+assignments to generate grouped bar charts that help analyze patterns in binary code structure.
+"""
+
 import pandas as pd
 import matplotlib.pyplot as plt
 
