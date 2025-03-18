@@ -1,3 +1,9 @@
+"""
+This module provides functionality for visualizing cluster sizes and features in binary analysis.
+It processes entropy and cluster data from CSV files to generate bar charts showing the
+distribution of distinct assemblies across different clusters.
+"""
+
 import pandas as pd
 import matplotlib.pyplot as plt
 
