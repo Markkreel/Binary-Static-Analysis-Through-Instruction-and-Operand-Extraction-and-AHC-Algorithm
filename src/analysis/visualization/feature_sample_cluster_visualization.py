@@ -30,6 +30,17 @@ def aggregate_data(merged_data):
 
 
 def plot_grouped_bar_chart(aggregated_data, data_type):
+    """
+    Create a grouped bar chart visualization of average entropy levels by assembly and cluster.
+
+    Args:
+        aggregated_data (pandas.DataFrame): DataFrame containing aggregated entropy data
+            with columns 'Cluster', 'Assembly', and 'Entropy'
+        data_type (str): Type of data being visualized (e.g., 'Left Operand')
+
+    Returns:
+        None: Displays the plot using matplotlib
+    """
     # Pivot the data to get clusters on the X-axis and assemblies as the bar groups
     pivot_data = aggregated_data.pivot(
         index="Cluster", columns="Assembly", values="Entropy"
