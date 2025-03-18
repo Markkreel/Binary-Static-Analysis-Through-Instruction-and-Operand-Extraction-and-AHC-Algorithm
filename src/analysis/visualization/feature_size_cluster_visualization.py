@@ -3,6 +3,14 @@ import matplotlib.pyplot as plt
 
 
 def load_data():
+    """
+    Loads entropy and cluster data from CSV files.
+
+    Returns:
+        tuple: A tuple containing two pandas DataFrames:
+            - entropy_data: DataFrame containing entropy-related information
+            - cluster_data: DataFrame containing cluster assignments
+    """
     # Load the data from the CSV files
     entropy_data = pd.read_csv("entropy_preprocessed/csv_parser_filtered_entropy.csv")
     cluster_data = pd.read_csv("clusters.csv")
