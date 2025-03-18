@@ -16,6 +16,16 @@ def filter_data(entropy_data, data_type):
 
 
 def merge_data(filtered_data, cluster_data):
+    """
+    Merges filtered entropy data with cluster data based on Block_ID.
+
+    Args:
+        filtered_data (pandas.DataFrame): DataFrame containing filtered entropy data
+        cluster_data (pandas.DataFrame): DataFrame containing cluster assignments
+
+    Returns:
+        pandas.DataFrame: Merged DataFrame containing both entropy and cluster data
+    """
     # Merge the filtered data with the cluster data on the "Block_ID" column
     merged_data = pd.merge(filtered_data, cluster_data, on="Block_ID")
     return merged_data
