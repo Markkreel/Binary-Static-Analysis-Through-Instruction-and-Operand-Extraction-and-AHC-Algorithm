@@ -49,7 +49,7 @@ This section details the process of characterizing blocks based on their functio
 2. **Hierarchical Clustering and Visualization:**
    - **`agglomerative_hierarchical_clustering.py`** : This script employs Agglomerative Hierarchical Clustering (AHC) to group blocks based on their KL divergence similarities. AHC starts with each block as its own cluster and iteratively merges the most similar clusters until a desired hierarchy is formed. The resulting clusters represent groups of blocks with potentially similar functionalities.
 
-### Benefits
+### Advantages
 
 - By analyzing block distribution similarity, you can gain insights into how blocks might be functionally related.
 - The AHC algorithm helps visualize these relationships by grouping similar blocks together.
@@ -64,6 +64,7 @@ This section details the process of characterizing blocks based on their functio
 - Ensure the input data to these scripts is suitable for KL divergence calculations. Consider data normalization or smoothing if necessary (especially for distributions with low counts).
 - The choice between `kl_divergence.py` and `kl_divergence_normalized.py` depends on your data characteristics.
 - Modify the following code to the desired entropy CSV file and modify the number of existing blocks in the CSV file:
+
   ```python
   def main():
       INPUT_FILE = "similarity\csv_parser_block_similarity\csv_parser_block_similarity_normalized.csv"
