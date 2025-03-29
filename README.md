@@ -58,8 +58,7 @@ This section details the process of characterizing blocks based on their functio
 
 ### **Understanding the Output**
 
-- The scripts will likely generate a cluster dendrogram, a tree-like structure that depicts the hierarchical clustering process. Blocks with lower KL divergences (more similar distributions) will be merged earlier in the dendrogram, indicating their closer functional relationship.
-- You can use the dendrogram to determine the appropriate number of clusters (groups of similar blocks) based on your analysis goals.
+The scripts are anticipated to produce a cluster dendrogram, which is a tree-like diagram illustrating the hierarchical clustering process. Within this structure, blocks exhibiting lower KL divergences, indicative of more similar probability distributions, will be merged at earlier stages of the dendrogram, signifying a closer functional relationship. This dendrogram can be utilized to ascertain the optimal number of clusters, or groups of similar blocks, tailored to the specific objectives of the analysis.
 
 ### **Additional Notes**
 
