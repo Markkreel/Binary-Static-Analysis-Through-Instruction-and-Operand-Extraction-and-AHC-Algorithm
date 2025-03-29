@@ -74,7 +74,7 @@ The scripts are anticipated to produce a cluster dendrogram, which is a tree-lik
 
 ## Visualizing Block Similarities with Heatmaps
 
-The Python script utilizes pre-computed similarity metrics derived from the Kullback-Leibler (KL) divergence algorithms, as implemented in the scripts `kl_divergence.py` or `kl_divergence_normalized.py`. These metrics quantify the dissimilarity between the probability distributions of distinct blocks, with lower values denoting higher degrees of similarity. Subsequently, the script generates a heatmap to provide a visual representation of the similarity matrix. 
+The Python script utilizes pre-computed similarity metrics derived from the Kullback-Leibler (KL) divergence algorithms, as implemented in the scripts `kl_divergence.py` or `kl_divergence_normalized.py`. These metrics quantify the dissimilarity between the probability distributions of distinct blocks, with lower values denoting higher degrees of similarity. Subsequently, the script generates a heatmap to provide a visual representation of the similarity matrix.
 
 In this visualization, color gradients are employed to depict the data values: darker shades, approaching black, are indicative of higher similarity (lower KL divergence values), whereas lighter shades, nearing white, signify lower similarity (higher KL divergence values). The spectrum of similarity values typically spans from 0, representing maximum similarity, to positive infinity, denoting complete dissimilarity.
 
