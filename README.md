@@ -80,6 +80,6 @@ The Python script utilizes pre-computed similarity metrics derived from the Kull
 
 ### Benefits
 
-Heatmaps provide a convenient way to quickly identify blocks with high similarity scores, potentially suggesting similar functionalities. Futhermore, visualizing the entire matrix allows for a more comprehensive understanding of the relationships between all blocks.
+Heatmaps facilitate the rapid identification of blocks with high similarity scores, suggesting potential functional similarities. Visualizing the entire matrix enhances the comprehensive understanding of inter-block relationships.
 
 **Last Updated:** 29-03-2025 ⸺ **Last Reviewed:** 29-03-2025
