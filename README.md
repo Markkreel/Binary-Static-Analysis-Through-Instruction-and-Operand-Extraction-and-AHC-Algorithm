@@ -53,8 +53,7 @@ This section details the process of characterizing blocks based on their functio
 
 ### Advantages
 
-- By analyzing block distribution similarity, you can gain insights into how blocks might be functionally related.
-- The AHC algorithm helps visualize these relationships by grouping similar blocks together.
+Analyzing the similarity in block distributions provides insights into potential functional relationships among blocks. The Agglomerative Hierarchical Clustering (AHC) algorithm aids in visualizing these relationships by clustering similar blocks together.
 
 ### **Understanding the Output**
 
