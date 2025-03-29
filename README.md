@@ -6,7 +6,7 @@ A computational forensic instrumentation framework employing Algorithmic Hierarc
 
 ### Visualizing Entropy for Specific Blocks
 
-This script allows you to visualize the entropy of instructions, operands (left and right), and their distribution within a chosen block. Entropy is a measure of randomness, indicating the level of disorder in the data. A higher entropy suggests more unpredictable or complex data.
+This script facilitates the visualization of entropy associated with instructions and operands (both left and right) within a specified block. Entropy, as a quantitative metric of randomness, serves as an indicator of the degree of disorder or unpredictability inherent in the data. Elevated entropy values typically correspond to data exhibiting greater complexity or stochasticity.
 
 1. **Specify Input File:**
    - The script expects an entropy data file in CSV format. The default file name is `"entropy\csv_parser_entropy.csv"`. You can modify this path in the `main` function if needed.
@@ -74,7 +74,9 @@ The scripts are anticipated to produce a cluster dendrogram, which is a tree-lik
 
 ## Visualizing Block Similarities with Heatmaps
 
-The Python script utilizes pre-computed similarity metrics derived from the Kullback-Leibler (KL) divergence algorithms, as implemented in the scripts `kl_divergence.py` or `kl_divergence_normalized.py`. These metrics quantify the dissimilarity between the probability distributions of distinct blocks, with lower values denoting higher degrees of similarity. Subsequently, the script generates a heatmap to provide a visual representation of the similarity matrix. In this visualization, color gradients are employed to depict the data values: darker shades, approaching black, are indicative of higher similarity (lower KL divergence values), whereas lighter shades, nearing white, signify lower similarity (higher KL divergence values). The spectrum of similarity values typically spans from 0, representing maximum similarity, to positive infinity, denoting complete dissimilarity.
+The Python script utilizes pre-computed similarity metrics derived from the Kullback-Leibler (KL) divergence algorithms, as implemented in the scripts `kl_divergence.py` or `kl_divergence_normalized.py`. These metrics quantify the dissimilarity between the probability distributions of distinct blocks, with lower values denoting higher degrees of similarity. Subsequently, the script generates a heatmap to provide a visual representation of the similarity matrix. 
+
+In this visualization, color gradients are employed to depict the data values: darker shades, approaching black, are indicative of higher similarity (lower KL divergence values), whereas lighter shades, nearing white, signify lower similarity (higher KL divergence values). The spectrum of similarity values typically spans from 0, representing maximum similarity, to positive infinity, denoting complete dissimilarity.
 
 ### Benefits
 
