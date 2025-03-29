@@ -1,5 +1,7 @@
 # Binary Static Analysis Through Instruction and Operand Extraction and Agglomerative Hierarchical Clustering (AHC)
 
+A computational forensic instrumentation framework employing Algorithmic Hierarchical Clustering (AHC) for comprehensive binary code block visualization and structural decomposition. The methodology integrates entropy-based probabilistic analysis and sophisticated similarity measurement protocols to facilitate introspective examination of disassembled binary architectural semantics.
+
 ## Entropy Visualization
 
 ### Visualizing Entropy for Specific Blocks
