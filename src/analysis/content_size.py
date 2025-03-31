@@ -13,6 +13,16 @@ def calculate_distinct_assemblies(df):
 
 
 def visualize_distinct_assemblies_bar_chart(df):
+    """
+    Creates a bar chart visualization of distinct assembly types per block and type.
+
+    Args:
+        df (pandas.DataFrame): DataFrame containing assembly data with Block_ID, Type,
+            and Assembly columns
+
+    Returns:
+        None: Displays the interactive bar chart using plotly
+    """
     distinct_counts = calculate_distinct_assemblies(df)
     fig = px.bar(
         distinct_counts,
