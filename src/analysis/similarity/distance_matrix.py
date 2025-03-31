@@ -1,7 +1,14 @@
+"""
+This module provides functionality for analyzing similarity between binary code blocks
+through distance matrix calculations and hierarchical clustering visualization.
+
+The module reads similarity scores from CSV files, converts them to distance matrices,
+and generates dendrograms to visualize the hierarchical relationships between code blocks.
+"""
+
 import csv
 import numpy as np
 import matplotlib.pyplot as plt
-
 from scipy.cluster.hierarchy import linkage, dendrogram
 
 
