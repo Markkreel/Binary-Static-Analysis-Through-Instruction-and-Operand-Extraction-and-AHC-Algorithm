@@ -24,7 +24,11 @@ def calculate_distinct_assemblies(df):
             grouped by Block_ID and Type
     """
     distinct_counts = (
-        df.groupby(["Block_ID", "Type"])["Assembly"].nunique().reset_index()
+        df.groupby(["Block_ID", "Type"])[  # Group data by Block_ID and Type columns
+            "Assembly"
+        ]  # Select the Assembly column
+        .nunique()  # Count unique assembly instructions in each group
+        .reset_index()  # Convert the grouped result back to a DataFrame
     )
     return distinct_counts
 
