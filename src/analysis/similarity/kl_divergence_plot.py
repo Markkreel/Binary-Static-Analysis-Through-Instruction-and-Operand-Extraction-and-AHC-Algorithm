@@ -6,7 +6,6 @@ between code blocks based on their instruction and operand usage patterns.
 """
 
 import pandas as pd
-from math import log2
 import numpy as np
 
 
