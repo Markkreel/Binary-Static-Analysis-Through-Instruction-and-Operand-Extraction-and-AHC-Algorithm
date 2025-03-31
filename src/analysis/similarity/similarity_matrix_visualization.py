@@ -51,10 +51,10 @@ def read_similarity_matrix(input_file):
         i = block_ids.index(block_id1)
         j = block_ids.index(block_id2)
         # Set similarity values symmetrically (matrix[i,j] = matrix[j,i])
-        similarity_matrix[i, j] = similarity
-        similarity_matrix[j, i] = similarity  # symmetric matrix
+        matrix[i, j] = similarity
+        matrix[j, i] = similarity  # symmetric matrix
 
-    return similarity_matrix, block_ids
+    return matrix, block_ids
 
 
 # Read the similarity matrix and block IDs from the CSV file
