@@ -1,3 +1,9 @@
+"""
+This module provides functionality for analyzing and visualizing distinct assembly 
+instructions in binary code blocks. It uses pandas for data manipulation and 
+plotly for creating interactive visualizations of assembly instruction distributions.
+"""
+
 import pandas as pd
 import plotly.express as px
 
