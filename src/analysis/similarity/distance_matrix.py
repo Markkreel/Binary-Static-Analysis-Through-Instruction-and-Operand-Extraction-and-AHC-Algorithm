@@ -21,6 +21,16 @@ def read_similarity_matrix(input_file, block_ids):
 
 
 def similarity_to_distance(similarity_matrix):
+    """
+    Convert a similarity matrix to a distance matrix.
+
+    Args:
+        similarity_matrix (numpy.ndarray): Matrix containing similarity scores between elements
+
+    Returns:
+        numpy.ndarray: Distance matrix where each value represents the distance between elements,
+                      calculated as the maximum similarity minus each similarity score
+    """
     max_similarity = np.max(similarity_matrix)
     distance_matrix = max_similarity - similarity_matrix
     return distance_matrix
