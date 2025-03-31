@@ -6,7 +6,6 @@ df = pd.read_csv(r"entropy\hello_world_entropy.csv")
 
 
 def calculate_distinct_assemblies(df):
-
     distinct_counts = (
         df.groupby(["Block_ID", "Type"])["Assembly"].nunique().reset_index()
     )
@@ -15,7 +14,6 @@ def calculate_distinct_assemblies(df):
 
 def visualize_distinct_assemblies_bar_chart(df):
     distinct_counts = calculate_distinct_assemblies(df)
-
     fig = px.bar(
         distinct_counts,
         x="Block_ID",
