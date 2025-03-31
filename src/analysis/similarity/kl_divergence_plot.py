@@ -1,3 +1,10 @@
+"""
+This module calculates and analyzes Kullback-Leibler divergence between probability
+distributions of assembly instructions and operands from different code blocks.
+It processes instruction and operand data from CSV files to measure the similarity
+between code blocks based on their instruction and operand usage patterns.
+"""
+
 import pandas as pd
 from math import log2
 import numpy as np
