@@ -5,7 +5,7 @@ import plotly.express as px
 cluster_df = pd.read_csv("clusters\csv_parser_clusters.csv")
 
 # Read the block CSV file
-block_df = pd.read_csv("entropy_preprocessed\csv_parser_filtered_entropy.csv")
+block_df = pd.read_csv("entropy_preprocessed/csv_parser_filtered_entropy.csv")
 
 # Merge the cluster and block dataframes on 'Block_ID'
 merged_df = pd.merge(cluster_df, block_df, on="Block_ID")
