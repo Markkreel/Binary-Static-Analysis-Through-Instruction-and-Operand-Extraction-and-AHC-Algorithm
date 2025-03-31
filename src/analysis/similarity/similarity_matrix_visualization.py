@@ -57,24 +57,35 @@ def read_similarity_matrix(input_file):
     return similarity_matrix, block_ids
 
 
-# Read the similarity matrix and block IDs
+# Read the similarity matrix and block IDs from the CSV file
 INPUT_FILE = "probability_update\simple_calculator_probability_update.csv"
 similarity_matrix, block_ids = read_similarity_matrix(INPUT_FILE)
 
-# Plot the heatmap
+# Create a new figure with specified dimensions (10x8 inches)
 plt.figure(figsize=(10, 8))
+
+# Generate heatmap visualization using seaborn
 sns.heatmap(
-    similarity_matrix,
-    xticklabels=block_ids,
-    yticklabels=block_ids,
-    cmap="viridis",
-    annot=True,
-    fmt=".2f",
+    similarity_matrix,  # Input data matrix
+    xticklabels=block_ids,  # Labels for x-axis ticks
+    yticklabels=block_ids,  # Labels for y-axis ticks
+    cmap="viridis",  # Color scheme for heatmap
+    annot=True,  # Show numerical values in cells
+    fmt=".2f",  # Format numbers to 2 decimal places
 )
+
+# Set the title and axis labels for the plot
 plt.title("Block Similarity Matrix Heatmap")
 plt.xlabel("Block ID")
 plt.ylabel("Block ID")
+
+# Rotate x-axis labels 90 degrees for better readability
 plt.xticks(rotation=90)
+# Keep y-axis labels horizontal
 plt.yticks(rotation=0)
+
+# Adjust layout to prevent label cutoff
 plt.tight_layout()
+
+# Display the plot
 plt.show()
