@@ -4,6 +4,15 @@ import numpy as np
 
 
 def calculate_distribution(block):
+    """
+    Calculate the probability distribution of assembly instructions in a block.
+
+    Args:
+        block (pandas.DataFrame): DataFrame containing assembly instructions and their probabilities
+
+    Returns:
+        pandas.Series: Normalized probability distribution of assembly instructions
+    """
     total_probability = block["Probability"].sum()
     distribution = block.groupby("Assembly")["Probability"].sum() / total_probability
     return distribution
