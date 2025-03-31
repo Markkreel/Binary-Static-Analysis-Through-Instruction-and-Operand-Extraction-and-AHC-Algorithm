@@ -1,3 +1,9 @@
+"""
+This module provides visualization functionality for cluster content analysis.
+It reads cluster and block data from CSV files, processes them to count distinct
+assembly instructions per cluster and type, and generates bar graphs using Plotly Express.
+"""
+
 import pandas as pd
 import plotly.express as px
 
