@@ -10,6 +10,16 @@ def calculate_distribution(block):
 
 
 def kl_divergence(p, q):
+    """
+    Calculate the Kullback-Leibler divergence between two probability distributions.
+
+    Args:
+        p (pandas.Series): First probability distribution
+        q (pandas.Series): Second probability distribution
+
+    Returns:
+        float: KL divergence value, or np.nan if distributions are invalid
+    """
     p, q = p.align(q, fill_value=0)
 
     # Check for empty or invalid distributions
