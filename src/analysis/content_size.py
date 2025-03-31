@@ -44,15 +44,21 @@ def visualize_distinct_assemblies_bar_chart(df):
     Returns:
         None: Displays the interactive bar chart using plotly
     """
+    # Calculate distinct assembly instructions per block and type
     distinct_counts = calculate_distinct_assemblies(df)
+
+    # Create a grouped bar chart using plotly express
     fig = px.bar(
-        distinct_counts,
-        x="Block_ID",
-        y="Assembly",
-        color="Type",
-        title="Number of Distinct Assembly Types per Block and Type (Print 'Hello World')",
-        labels={"Assembly": "Number of Distinct Assembly", "Block_ID": "Block #"},
-        barmode="group",
+        distinct_counts,  # Input DataFrame containing the distinct counts
+        x="Block_ID",  # X-axis: Block ID numbers
+        y="Assembly",  # Y-axis: Count of unique assembly instructions
+        color="Type",  # Color bars based on instruction type
+        title="Number of Distinct Assembly Types per Block and Type (Print 'Hello World')",  # Chart title
+        labels={
+            "Assembly": "Number of Distinct Assembly",
+            "Block_ID": "Block #",
+        },  # Axis labels
+        barmode="group",  # Group bars side by side instead of stacking
     )
 
     fig.update_layout(
