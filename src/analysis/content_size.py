@@ -6,6 +6,17 @@ df = pd.read_csv(r"entropy\hello_world_entropy.csv")
 
 
 def calculate_distinct_assemblies(df):
+    """
+    Calculate the number of unique assembly instructions per block and type.
+
+    Args:
+        df (pandas.DataFrame): DataFrame containing assembly data with Block_ID, Type,
+            and Assembly columns
+
+    Returns:
+        pandas.DataFrame: DataFrame containing counts of distinct assembly instructions
+            grouped by Block_ID and Type
+    """
     distinct_counts = (
         df.groupby(["Block_ID", "Type"])["Assembly"].nunique().reset_index()
     )
