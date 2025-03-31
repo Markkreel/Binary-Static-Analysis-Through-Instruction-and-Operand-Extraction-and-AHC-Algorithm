@@ -6,6 +6,17 @@ from scipy.cluster.hierarchy import linkage, dendrogram
 
 
 def read_similarity_matrix(input_file, block_ids):
+    """
+    Read a similarity matrix from a CSV file.
+
+    Args:
+        input_file (str): Path to the CSV file containing similarity scores
+        block_ids (list): List of block identifiers
+
+    Returns:
+        numpy.ndarray: A square matrix where each element [i,j] represents
+                      the similarity score between blocks i and j
+    """
     size = len(block_ids)
     similarity_matrix = np.zeros((size, size))
     with open(input_file, newline="", encoding="utf-8") as csvfile:
