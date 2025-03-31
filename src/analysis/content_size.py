@@ -62,17 +62,25 @@ def visualize_distinct_assemblies_bar_chart(df):
     )
 
     fig.update_layout(
-        xaxis_tickangle=-45,
-        xaxis={"type": "category"},
-        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
+        xaxis_tickangle=-45,  # Rotate x-axis labels by -45 degrees for better readability
+        xaxis={"type": "category"},  # Set x-axis type to categorical
+        legend=dict(
+            orientation="h",  # Set legend orientation to horizontal
+            yanchor="bottom",  # Anchor legend to bottom
+            y=1.02,  # Position legend slightly above the plot
+            xanchor="right",  # Anchor legend to right side
+            x=1,  # Position legend at rightmost position
+        ),
         font=dict(
-            family="SF Pro Display, sans-serif",
-            size=12,
-            color="black",
+            family="SF Pro Display, sans-serif",  # Set font family
+            size=12,  # Set font size to 12
+            color="black",  # Set font color to black
         ),
     )
 
-    fig.show()
+    fig.show()  # Display the interactive plot
 
 
-visualize_distinct_assemblies_bar_chart(df)
+visualize_distinct_assemblies_bar_chart(
+    df
+)  # Call the visualization function with the DataFrame
