@@ -10,7 +10,6 @@ def calculate_distribution(block):
 
 
 def kl_divergence(p, q):
-
     p, q = p.align(q, fill_value=0)
 
     # Check for empty or invalid distributions
@@ -19,7 +18,6 @@ def kl_divergence(p, q):
 
     kl_div = (p * np.log2(p / q)).sum()
 
-    errors
     if np.isnan(kl_div) or np.isinf(kl_div):
         return np.nan
 
