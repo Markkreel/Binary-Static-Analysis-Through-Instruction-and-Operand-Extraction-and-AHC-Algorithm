@@ -23,24 +23,37 @@ def read_similarity_matrix(input_file):
               the similarity between two blocks
             - list: Sorted list of unique block IDs
     """
+    # Initialize empty set for unique block IDs and list for similarity entries
     block_ids = set()
     similarities = []
+
+    # Open and read the CSV file containing similarity data
     with open(input_file, newline="", encoding="UTF-8") as csvfile:
         reader = csv.reader(csvfile)
         next(reader)  # Skip header
         for row in reader:
+            # Extract block IDs and similarity value from each row
             block_id1, block_id2, similarity = row
+            # Add block IDs to set (duplicates automatically handled)
             block_ids.add(block_id1)
             block_ids.add(block_id2)
+            # Store similarity data as tuple with converted float value
             similarities.append((block_id1, block_id2, float(similarity)))
+
     block_ids = sorted(block_ids)  # Sort block IDs
-    size = len(block_ids)
+    size = len(block_ids)  # Get dimension for square matrix
+    # Initialize empty square matrix with zeros
     similarity_matrix = np.zeros((size, size))
+
+    # Populate similarity matrix with values
     for block_id1, block_id2, similarity in similarities:
+        # Get indices for both blocks in the matrix
         i = block_ids.index(block_id1)
         j = block_ids.index(block_id2)
+        # Set similarity values symmetrically (matrix[i,j] = matrix[j,i])
         similarity_matrix[i, j] = similarity
         similarity_matrix[j, i] = similarity  # symmetric matrix
+
     return similarity_matrix, block_ids
 
 
