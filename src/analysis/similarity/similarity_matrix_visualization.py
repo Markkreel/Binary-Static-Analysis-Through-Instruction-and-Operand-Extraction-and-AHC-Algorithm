@@ -40,7 +40,7 @@ def read_similarity_matrix(input_file):
             # Store similarity data as tuple with converted float value
             similarities.append((block_id1, block_id2, float(similarity)))
 
-    block_ids = sorted(block_ids)  # Sort block IDs
+    block_ids = sorted(unique_block_ids)  # Sort block IDs
     size = len(block_ids)  # Get dimension for square matrix
     # Initialize empty square matrix with zeros
     matrix = np.zeros((size, size))
