@@ -35,8 +35,8 @@ def read_similarity_matrix(input_file):
             # Extract block IDs and similarity value from each row
             block_id1, block_id2, similarity = row
             # Add block IDs to set (duplicates automatically handled)
-            block_ids.add(block_id1)
-            block_ids.add(block_id2)
+            unique_block_ids.add(block_id1)
+            unique_block_ids.add(block_id2)
             # Store similarity data as tuple with converted float value
             similarities.append((block_id1, block_id2, float(similarity)))
 
