@@ -2,7 +2,7 @@ import pandas as pd
 import plotly.express as px
 
 # Read the cluster CSV file
-cluster_df = pd.read_csv("clusters\csv_parser_clusters.csv")
+cluster_df = pd.read_csv("clusters/csv_parser_clusters.csv")
 
 # Read the block CSV file
 block_df = pd.read_csv("entropy_preprocessed/csv_parser_filtered_entropy.csv")
