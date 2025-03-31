@@ -1,3 +1,10 @@
+"""
+This module provides visualization functionality for cluster entropy analysis.
+It reads cluster and entropy data from CSV files, processes them to calculate
+average entropy values per cluster, and generates bar plots using Plotly Express
+to visualize the entropy distribution across different clusters.
+"""
+
 import pandas as pd
 import plotly.express as px
 
