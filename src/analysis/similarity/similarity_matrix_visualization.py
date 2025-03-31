@@ -24,7 +24,7 @@ def read_similarity_matrix(input_file):
             - list: Sorted list of unique block IDs
     """
     # Initialize empty set for unique block IDs and list for similarity entries
-    block_ids = set()
+    unique_block_ids = set()
     similarities = []
 
     # Open and read the CSV file containing similarity data
@@ -43,7 +43,7 @@ def read_similarity_matrix(input_file):
     block_ids = sorted(block_ids)  # Sort block IDs
     size = len(block_ids)  # Get dimension for square matrix
     # Initialize empty square matrix with zeros
-    similarity_matrix = np.zeros((size, size))
+    matrix = np.zeros((size, size))
 
     # Populate similarity matrix with values
     for block_id1, block_id2, similarity in similarities:
@@ -58,7 +58,7 @@ def read_similarity_matrix(input_file):
 
 
 # Read the similarity matrix and block IDs from the CSV file
-INPUT_FILE = "probability_update\simple_calculator_probability_update.csv"
+INPUT_FILE = "probability_update/simple_calculator_probability_update.csv"
 similarity_matrix, block_ids = read_similarity_matrix(INPUT_FILE)
 
 # Create a new figure with specified dimensions (10x8 inches)
